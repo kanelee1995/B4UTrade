@@ -28,6 +28,8 @@ const StockTable = (props) => {
           ))}
         </thead>
 
+  
+
         <tbody {...getTableBodyProps()}>
           {rows.map((row) => {
             prepareRow(row);
