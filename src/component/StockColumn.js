@@ -1,23 +1,39 @@
-
 export const COLUMNS = [
   {
-    Header: 'Date',
-    accessor:'date'
+    id: "date",
+    Header: "Date",
+    accessor: "datetime",
   },
   {
-    Header: 'Ticker',
-    accessor: 'symbol'
+    id: "open",
+    Header: "Open",
+    accessor: (row) => Math.round(row.open * 100) / 100,
   },
   {
-    Header: 'Open',
-    accessor: 'open'
+    id: "close",
+    Header: "Close",
+    accessor: (row) => Math.round(row.close * 100) / 100,
   },
   {
-    Header: 'Close',
-    accessor: 'close'
+    id: "changePercent",
+    Header: "Change %",
+    accessor: (row) => changeResultToPercent(row.open, row.close) + "%",
   },
-  {
-    Header: 'Volume',
-    accessor: 'volume'
-  },
-]
+];
+
+const changeCalculator = (open, close) => {
+  return Number(open) - Number(close);
+};
+
+const changeResultToPercent = (open, close) => {
+  return Math.round(changeCalculator(open, close) * 100) / 100;
+};
+
+// Conditional cell render code
+// Cell: props => {
+//   return props.row.original.id > 800 ? (
+//     <p>{props.row.original.id}</p>
+//   ) : (
+//     <button disabled> No action </button>
+//   );
+// }

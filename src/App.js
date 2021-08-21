@@ -4,49 +4,80 @@ import SearchBarButton from "./component/SearchBarButton";
 import SearchBar from "./component/SearchBar";
 // import StockRow from "./component/StockRow";
 import StockTable from "./component/StockTable";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
-  const [userInput, setuserInput] = useState("AAPL");
-  const [buttonValue, setbuttonValue] = useState("AAPL");
+  const [userInput, setuserInput] = useState("");
+  const [buttonValue, setbuttonValue] = useState("");
   const [data, setdata] = useState([]);
 
-  const buttonHandler = () => {
+  const buttonHandler = (e) => {
+    // e.preventDefault();
     setbuttonValue(userInput);
     // console.log('button');
+    console.log(e);
   };
 
   const inputHandler = (e) => {
     setuserInput(e.target.value);
   };
 
+  const keypressHandler = (e) => {
+    if (e.key === "Enter") {
+      buttonHandler();
+      // console.log(e)
+    }
+  };
+
   useEffect(() => {
+    const options = {
+      method: "GET",
+      url: "https://twelve-data1.p.rapidapi.com/time_series",
+      params: {
+        symbol: `${buttonValue}`,
+        interval: "1day",
+        outputsize: "5",
+        format: "json",
+      },
+      headers: {
+        "x-rapidapi-key": "52979a8a04msha30f088adf5a675p1868e1jsnc49e105d3bfc",
+        "x-rapidapi-host": "twelve-data1.p.rapidapi.com",
+      },
+    };
+
     axios
-      .get(
-        `http://api.marketstack.com/v1/eod?access_key=e25d2900d3c40a68798721f8430a5753&symbols=${buttonValue}&limit=10`
-      )
-      .then((res) => {
-        const jsonData = res["data"];
-        // setdata(jsonData["data"].map((data) => <p>Symbol:{data["symbol"]}     Date:{data["date"]}     Open:{data["open"]}</p>));
-        // console.log(jsonData["data"]);
-        setdata(jsonData["data"]);
-        console.log(jsonData["data"]);
+      .request(options)
+      .then(function (response) {
+        setdata(response.data["values"]);
+        // console.log(response.data["values"]);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(function (error) {
+        console.error(error);
       });
   }, [buttonValue]);
 
   return (
     <div className="app">
       <div className="header">
-        <h1 className="title">Stock Data - 10 Days</h1>
+        <p className="title">TradeAndLog</p>
+      </div>
+      <div className="mainContent">
+        <h1 className="headline">Beat the market.</h1>
+        <h2 className="subheadline">
+          Get the lastest historical & fundamental data of a stock.
+        </h2>
         <div className="searchContainer">
-          <SearchBar userInput={userInput} inputHandle={inputHandler} />
+          <FontAwesomeIcon icon={faSearch} className={"searchIcon"} />
+          <SearchBar
+            userInput={userInput}
+            inputHandle={inputHandler}
+            keypressHandle={keypressHandler}
+          />
           <SearchBarButton buttonHandle={buttonHandler} />
         </div>
       </div>
-      {/* <StockRow data={data} /> */}
-      <StockTable data={data} />
+      {/* <StockTable data={data} /> */}
     </div>
   );
 }
