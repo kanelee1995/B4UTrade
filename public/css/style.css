@@ -4,14 +4,27 @@
 }
 
 .app {
-  /* background-color: var(--dark); */
   background-image: url("./image/background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+/* background-color: #1a1919; */
   min-height: 100vh;
   min-width: 100vw;
   overflow: hidden;
+}
+
+.overlay {
+  position: fixed; 
+  width: 100%; 
+  height: 100%; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); 
+  z-index: 2;
+  cursor: default; 
 }
 
 /* Header */
@@ -91,7 +104,7 @@ h1 {
   color: #fff;
   padding: 30vh 0 0 10vw;
   font-size: 5em !important;
-  font-family: var(--topic);
+  font-family: 'Epilogue', sans-serif;;
   margin: 0px!important;
 }
 
@@ -101,4 +114,5 @@ h2 {
   padding: 0 0 0 10vw;
   font-size: 1.5em !important;
   font-family: var(--topic);
+  font-weight: 300;
 }

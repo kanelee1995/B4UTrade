@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SearchBarButton from "./component/SearchBarButton";
 import SearchBar from "./component/SearchBar";
-// import StockRow from "./component/StockRow";
 import StockTable from "./component/StockTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import stockPhoto from "./component/stocks.svg";
 
 function App() {
   const [userInput, setuserInput] = useState("");
@@ -59,24 +59,29 @@ function App() {
 
   return (
     <div className="app">
-      <div className="header">
-        <p className="title">TradeAndLog</p>
-      </div>
-      <div className="mainContent">
-        <h1 className="headline">Beat the market.</h1>
-        <h2 className="subheadline">
-          Get the lastest historical & fundamental data of a stock.
-        </h2>
-        <div className="searchContainer">
-          <FontAwesomeIcon icon={faSearch} className={"searchIcon"} />
-          <SearchBar
-            userInput={userInput}
-            inputHandle={inputHandler}
-            keypressHandle={keypressHandler}
-          />
-          <SearchBarButton buttonHandle={buttonHandler} />
+      <div className="overlay">
+        <div className="header">
+          <p className="title">TradeAndLog</p>
+        </div>
+        <div className="mainContent">
+          <h1 className="headline">Beat the market.</h1>
+          <h2 className="subheadline">
+            Get the lastest historical & fundamental data of a stock.
+          </h2>
+          <div className="searchContainer">
+            <FontAwesomeIcon icon={faSearch} className={"searchIcon"} />
+            <SearchBar
+              userInput={userInput}
+              inputHandle={inputHandler}
+              keypressHandle={keypressHandler}
+            />
+            <SearchBarButton buttonHandle={buttonHandler} />
+          </div>
         </div>
       </div>
+
+      {/* <img src={stockPhoto} alt="stockPhoto" className="stockPhoto" /> */}
+
       {/* <StockTable data={data} /> */}
     </div>
   );
