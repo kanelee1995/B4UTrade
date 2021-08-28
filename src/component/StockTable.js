@@ -1,19 +1,28 @@
 import React, { useMemo } from "react";
 import { COLUMNS } from "./StockColumn";
-import { useTable } from "react-table";
+import { usePagination, useTable } from "react-table";
 import "./table.css";
 
 const StockTable = (props) => {
   const columns = useMemo(() => COLUMNS, []);
 
-  const tableInstance = useTable({
-    columns: columns,
-    data: props.data,
-  });
+  const tableInstance = useTable(
+    {
+      columns: columns,
+      data: props.data,
+    },
+    usePagination
+  );
 
-
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    tableInstance;
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    nextPage,
+    previousPage,
+    prepareRow,
+  } = tableInstance;
 
   return (
     <div className="table-wrapper">
@@ -28,10 +37,8 @@ const StockTable = (props) => {
           ))}
         </thead>
 
-  
-
         <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
+          {page.map((row) => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
@@ -45,6 +52,10 @@ const StockTable = (props) => {
           })}
         </tbody>
       </table>
+      <div className="tablePageBtn">
+        <button onClick={() => previousPage()}>&lsaquo;</button>
+        <button onClick={() => nextPage()}>&rsaquo;</button>
+      </div>
     </div>
   );
 };

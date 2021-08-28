@@ -1,24 +1,24 @@
 .table-wrapper {
-  margin: 70px 70px 70px;
+  /* margin: 70px 70px 70px; */
   box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
   animation: fadeIn linear 1s;
   -webkit-animation: fadeIn linear 1s;
   -moz-animation: fadeIn linear 1s;
   -o-animation: fadeIn linear 1s;
   -ms-animation: fadeIn linear 1s;
+  width: 30%;
 }
 
 .tableA {
   font-size: 12px;
   font-weight: normal;
-  border: 1px solid #4e5058;
+  /* border: 1px solid #4e5058; */
   border-collapse: collapse;
   width: 100%;
   max-width: 100%;
   white-space: nowrap;
-  background-color: rgb(14, 14, 14);
+  /* background-color: rgba(14, 14, 14, 0.5); */
   color: #4fc3a1;
-  border-radius: 5px;
 }
 
 @keyframes fadeIn {
@@ -75,7 +75,12 @@
 .tableA td,
 .tableA th {
   text-align: center;
-  padding: 8px;
+  padding: 4px;
+}
+
+.tableA th:first-child {
+  border-top-left-radius: 10px;
+  /* border-top-right-radius: 10px; */
 }
 
 .tableA td {
@@ -140,7 +145,7 @@
     box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: auto;
-    width: 50px;
+    width: 30px;
     font-size: 13px;
     text-overflow: ellipsis;
   }
@@ -168,4 +173,27 @@
     display: block;
     text-align: center;
   }
+}
+
+/* td:first-child{
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+td:last-child{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+} */
+
+/* TablePageButton */
+
+.tablePageBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: none;
+}
+
+.tablePageBtn button {
+  font-family: "Epilogue", sans-serif;
 }

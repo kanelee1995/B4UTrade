@@ -5,11 +5,11 @@ import SearchBar from "./component/SearchBar";
 import StockTable from "./component/StockTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import stockPhoto from "./component/stocks.svg";
+import IndexBar from "./component/IndexBar";
 
 function App() {
-  const [userInput, setuserInput] = useState("");
-  const [buttonValue, setbuttonValue] = useState("");
+  const [userInput, setuserInput] = useState("AAPL");
+  const [buttonValue, setbuttonValue] = useState("AAPL");
   const [data, setdata] = useState([]);
 
   const buttonHandler = (e) => {
@@ -30,32 +30,42 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "https://twelve-data1.p.rapidapi.com/time_series",
-      params: {
-        symbol: `${buttonValue}`,
-        interval: "1day",
-        outputsize: "5",
-        format: "json",
-      },
-      headers: {
-        "x-rapidapi-key": "52979a8a04msha30f088adf5a675p1868e1jsnc49e105d3bfc",
-        "x-rapidapi-host": "twelve-data1.p.rapidapi.com",
-      },
-    };
+  // useEffect(() => {
+  //   const options = {
+  //     method: "GET",
+  //     url: "https://twelve-data1.p.rapidapi.com/time_series",
+  //     params: {
+  //       symbol: `${buttonValue}`,
+  //       interval: "1day",
+  //       outputsize: "10",
+  //       format: "json",
+  //     },
+  //     headers: {
+  //       "x-rapidapi-key": "52979a8a04msha30f088adf5a675p1868e1jsnc49e105d3bfc",
+  //       "x-rapidapi-host": "twelve-data1.p.rapidapi.com",
+  //     },
+  //   };
 
+  //   axios
+  //     .request(options)
+  //     .then(function (response) {
+  //       setdata(response.data["values"]);
+  //       // console.log(response.data["values"]);
+  //     })
+  //     .catch(function (error) {
+  //       console.error(error);
+  //     });
+  // }, [buttonValue]);
+
+  useEffect(() => {
     axios
-      .request(options)
-      .then(function (response) {
-        setdata(response.data["values"]);
-        // console.log(response.data["values"]);
-      })
-      .catch(function (error) {
-        console.error(error);
+      .get(
+        "https://financialmodelingprep.com/api/v3/stock/gainers?apikey=d7f8484c1c8ac4235b39e22345b8dbbd"
+      )
+      .then((response) => {
+        setdata(response["data"]["mostGainerStock"]);
       });
-  }, [buttonValue]);
+  }, []);
 
   return (
     <div className="app">
@@ -64,25 +74,27 @@ function App() {
           <p className="title">TradeAndLog</p>
         </div>
         <div className="mainContent">
-          <h1 className="headline">Beat the market.</h1>
-          <h2 className="subheadline">
-            Get the lastest historical & fundamental data of a stock.
-          </h2>
-          <div className="searchContainer">
-            <FontAwesomeIcon icon={faSearch} className={"searchIcon"} />
-            <SearchBar
-              userInput={userInput}
-              inputHandle={inputHandler}
-              keypressHandle={keypressHandler}
-            />
-            <SearchBarButton buttonHandle={buttonHandler} />
+          <div className="leftContent">
+            <h1 className="headline">Beat the market.</h1>
+            <h2 className="subheadline">
+              Get the lastest historical & fundamental data of a stock.
+            </h2>
+            <div className="searchContainer">
+              <FontAwesomeIcon icon={faSearch} className={"searchIcon"} />
+              <SearchBar
+                userInput={userInput}
+                inputHandle={inputHandler}
+                keypressHandle={keypressHandler}
+              />
+              <SearchBarButton buttonHandle={buttonHandler} />
+            </div>
+          </div>
+          <div className="rightContent">
+            {/* <IndexBar /> */}
+            {/* <StockTable data={data} className="table" /> */}
           </div>
         </div>
       </div>
-
-      {/* <img src={stockPhoto} alt="stockPhoto" className="stockPhoto" /> */}
-
-      {/* <StockTable data={data} /> */}
     </div>
   );
 }
