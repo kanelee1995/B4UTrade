@@ -60,10 +60,11 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        "https://financialmodelingprep.com/api/v3/stock/gainers?apikey=d7f8484c1c8ac4235b39e22345b8dbbd"
+        "https://financialmodelingprep.com/api/v3/gainers?apikey=d7f8484c1c8ac4235b39e22345b8dbbd"
       )
       .then((response) => {
-        setdata(response["data"]["mostGainerStock"]);
+        setdata(response["data"]);
+        console.log(response["data"]);
       });
   }, []);
 
@@ -72,6 +73,7 @@ function App() {
       <div className="overlay">
         <div className="header">
           <p className="title">TradeAndLog</p>
+          <IndexBar datas={data} />
         </div>
         <div className="mainContent">
           <div className="leftContent">
@@ -89,10 +91,7 @@ function App() {
               <SearchBarButton buttonHandle={buttonHandler} />
             </div>
           </div>
-          <div className="rightContent">
-            {/* <IndexBar /> */}
-            {/* <StockTable data={data} className="table" /> */}
-          </div>
+          <div className="rightContent"></div>
         </div>
       </div>
     </div>

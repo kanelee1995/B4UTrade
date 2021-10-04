@@ -35,7 +35,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100vw;
-  /* background-color: rgba(14, 14, 14, 0.75); */
+  background-color: rgba(14, 14, 14, 0.75);
   box-shadow: #1a1919;
   text-align: center;
   height: 5vh;
@@ -61,12 +61,12 @@
   height: 95vh;
 }
 
-/* .rightContent {
+.rightContent {
   width: 50vw;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-} */
+  justify-content: center;
+  align-items: flex-start;
+}
 
 .leftContent {
   width: 50vw;
@@ -151,6 +151,52 @@ h2 {
   margin: 0px;
   border-width: 0px;
 }
+
+
+
+/* MostGainerBar */
+
+.indexBar {
+  /* margin-top: 20vh; */
+}
+
+.indexBarTitle {
+  color: #fff;
+  font-size: 1.25em ;
+  font-family: var(--topic);
+  font-weight: 300; 
+  text-align: center;
+}
+
+.indexBarItem {
+  color: white;
+  list-style: none;
+  display: inline-block;
+  padding:0px 40px 0px 0px;
+}
+
+.whiteSpace {
+  padding: 10px;
+  color: #4fc3a1;
+}
+
+.indexList {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0px;
+}
+
+li {
+  font-size: 1rem;
+  text-align: left;
+}
+
+.companyName {
+  font-size: 0.8rem;
+}
+
 
 
 
