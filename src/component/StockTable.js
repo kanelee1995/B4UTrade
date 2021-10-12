@@ -3,13 +3,13 @@ import { COLUMNS } from "./StockColumn";
 import { usePagination, useTable } from "react-table";
 import "./table.css";
 
-const StockTable = (props) => {
+const StockTable = ({tableData}) => {
   const columns = useMemo(() => COLUMNS, []);
 
   const tableInstance = useTable(
     {
       columns: columns,
-      data: props.data,
+      data: tableData,
     },
     usePagination
   );
