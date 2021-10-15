@@ -4,27 +4,14 @@
 }
 
 .app {
-  background-image: url("./image/background.jpg");
-  background-size: cover;
-  background-position: top;
-  background-repeat: no-repeat;
-/* background-color: #1a1919; */
+  /* background-color: #1a1919; */
   min-height: 100vh;
   min-width: 100vw;
   overflow: hidden;
 }
 
-.overlay {
-  position: fixed; 
-  width: 100%; 
-  height: 100%; 
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.651); 
-  z-index: 2;
-  cursor: default; 
+.app p {
+  color: #fff;
 }
 
 /* Header */
@@ -35,13 +22,14 @@
   align-items: center;
   justify-content: space-between;
   width: 100vw;
-  background-color: rgba(14, 14, 14, 0.75);
+  background-color: rgb(29, 29, 29);
   box-shadow: #1a1919;
   text-align: center;
   height: 5vh;
 }
 
 .title {
+  text-decoration: none;
   margin-left: 70px;
   color: #fff;
   /* padding: 70px 0px 0px 70px; */
@@ -54,6 +42,10 @@
 /* MainContent */
 
 .mainContent {
+  background-image: url("./image/background.png");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: row;
   width: 100vw;
@@ -61,15 +53,21 @@
   height: 95vh;
 }
 
-.rightContent {
-  width: 50vw;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+.mainContent::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(10, 10, 10, 0.651);
+  /* z-index: 999;
+  cursor: default;  */
 }
 
 .leftContent {
-  width: 50vw;
+  /* width: 50vw; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -80,16 +78,13 @@
 
 h1 {
   color: #fff;
-  padding: 0 0 0 10vw;
   font-size: 5em !important;
-  font-family: 'Epilogue', sans-serif;
-  margin: 0px!important;
+  font-family: "Epilogue", sans-serif;
+  margin: 0px !important;
 }
-
 
 h2 {
   color: #fff;
-  padding: 0 0 0 10vw;
   font-size: 1.5em !important;
   font-family: var(--topic);
   font-weight: 300;
@@ -98,7 +93,7 @@ h2 {
 /* Search Bar */
 
 .searchContainer {
-  padding: 15px 0px 5px 10vw;
+  padding: 15px 0px 5px 0px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -118,7 +113,7 @@ h2 {
   transition: 0.5s;
   outline: none;
   padding-left: 40px;
-  font-family: 'Epilogue', sans-serif;
+  font-family: "Epilogue", sans-serif;
   font-size: x-large;
 }
 
@@ -152,19 +147,17 @@ h2 {
   border-width: 0px;
 }
 
-
+.invisibleButton {
+  display: none;
+}
 
 /* MostGainerBar */
 
-.indexBar {
-  /* margin-top: 20vh; */
-}
-
 .indexBarTitle {
   color: #fff;
-  font-size: 1.25em ;
+  font-size: 1.25em;
   font-family: var(--topic);
-  font-weight: 300; 
+  font-weight: 300;
   text-align: center;
 }
 
@@ -172,7 +165,7 @@ h2 {
   color: white;
   list-style: none;
   display: inline-block;
-  padding:0px 40px 0px 0px;
+  padding: 0px 40px 0px 0px;
 }
 
 .whiteSpace {
@@ -197,7 +190,41 @@ li {
   font-size: 0.8rem;
 }
 
+/* Stock Detail page */
 
+.stockDetail {
+  /* background-color: #696868; */
+  height: 100%;
+  width: 100vw;
+  display: grid;
+  /* background-color: #1a1919; */
+}
 
+/* Profile */
+.companyLogo {
+  display: flex;
+  width:50px;
+  height:50px;
+  background-color: #fff;
+  border-radius: 50%;
+}
 
+.companyLogo img {
+  object-fit: contain;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  justify-content: center;
+  align-items: center;
+}
 
+/* Chart */
+/* .stockChart {
+  width: 80vw;
+} */
+
+/* Table */
+.MuiPaper-root {
+  background-color: #696868;
+}
