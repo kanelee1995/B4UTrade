@@ -19,6 +19,11 @@ export const COLUMNS = [
     Header: "Change %",
     accessor: (row) => changeResultToPercent(changeCalculator(row.open, row.close))+"%",
   },
+  // {
+  //   id: "changePercent",
+  //   Header: "Change %",
+  //   accessor: (row) => changeResultToPercent(row["changesPercentage"]) + "%",
+  // },
   {
     Header: "High",
     accessor: "high",

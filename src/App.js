@@ -66,7 +66,7 @@ function App() {
         "x-rapidapi-host": "twelve-data1.p.rapidapi.com",
       },
     };
-
+  
     axios
       .request(options)
       .then(function (response) {
@@ -150,5 +150,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;

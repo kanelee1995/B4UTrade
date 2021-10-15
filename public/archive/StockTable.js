@@ -1,71 +1,62 @@
 import React, { useMemo } from "react";
-import { useTable } from "react-table";
+import { COLUMNS } from "./StockColumn";
+import { usePagination, useTable } from "react-table";
+import "./table.css";
 
-const StockTable = (props) => {
-  const data = useMemo(() => props.tableData, []);
+const StockTable = ({tableData}) => {
+  const columns = useMemo(() => COLUMNS, []);
 
-  const columns = useMemo(
-    () => [
-      {
-        Header: "Date",
-        accessor: "datetime", // accessor is the "key" in the data
-      },
-      {
-        Header: "High",
-        accessor: "high",
-      },
-    ],
-    []
+  const tableInstance = useTable(
+    {
+      columns: columns,
+      data: tableData,
+    },
+    usePagination
   );
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    nextPage,
+    previousPage,
+    prepareRow,
+  } = tableInstance;
 
   return (
-    <table {...getTableProps()} style={{ border: "solid 1px blue" }}>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th
-                {...column.getHeaderProps()}
-                style={{
-                  borderBottom: "solid 3px red",
-                  background: "aliceblue",
-                  color: "black",
-                  fontWeight: "bold",
-                }}
-              >
-                {column.render("Header")}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return (
-                  <td
-                    {...cell.getCellProps()}
-                    style={{
-                      padding: "10px",
-                      border: "solid 1px gray",
-                      background: "papayawhip",
-                    }}
-                  >
-                    {cell.render("Cell")}
-                  </td>
-                );
-              })}
+    <div className="table-wrapper">
+      <table className={"tableA"} {...getTableProps()}>
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th {...column.getHeaderProps}>{column.render("Header")}</th>
+              ))}
             </tr>
-          );
-        })}
-      </tbody>
-    </table>
+          ))}
+        </thead>
+
+        <tbody {...getTableBodyProps()}>
+          {page.map((row) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell) => {
+                  return (
+                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <div className="tablePageBtn">
+        <button onClick={() => previousPage()}>&lsaquo;</button>
+        <button onClick={() => nextPage()}>&rsaquo;</button>
+      </div>
+    </div>
   );
 };
 
