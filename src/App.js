@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 function App() {
   // User input control & keydown
   const [userInput, setuserInput] = useState("");
-  const [stockSymbol, setstockSymbol] = useState("");
+  const [stockSymbol, setstockSymbol] = useState("AAPL");
 
   // Data for chart
   const [stockDateData, setstockDateData] = useState([]);
@@ -20,6 +20,12 @@ function App() {
 
   // Data for table
   const [tableData, settableData] = useState([]);
+  
+  // Data for earnings
+  const [earnings, setearnings] = useState([]);
+  // const [estimatedEPS, setestimatedEPS] = useState([]);
+  // const [surprisePercentage, setsurprisePercentage] = useState([]);
+  
 
   // Data for profile
   const [profileData, setprofileData] = useState([]);
@@ -45,8 +51,24 @@ function App() {
         `https://api.polygon.io/v1/meta/symbols/${stockSymbol}/company?apiKey=REGDCE9oeokuBTeCkEQpYRH81FU_a7if`
       )
       .then((response) => {
-        console.log(response["data"]);
+        // console.log(response["data"]);
         setprofileData(response["data"]);
+      });
+  }, [stockSymbol]);
+
+  // Data fetching for stock fundamentals
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://www.alphavantage.co/query?function=EARNINGS&symbol=${stockSymbol}&apikey=QHHEJX1I72MCYTJR`
+      )
+      .then((response) => {
+        let earningsArray = response["data"]["quarterlyEarnings"];
+        // setreportedEPS(earningsArray.slice(0,5).map(data => data.reportedEPS))
+        setearnings(earningsArray.slice(0,5))
+        // setestimatedEPS(earningsArray.slice(0,5).map(data => data.estimatedEPS))
+        // setsurprisePercentage(earningsArray.slice(0,5).map(data => data.surprisePercentage))
       });
   }, [stockSymbol]);
 
@@ -66,7 +88,7 @@ function App() {
         "x-rapidapi-host": "twelve-data1.p.rapidapi.com",
       },
     };
-  
+
     axios
       .request(options)
       .then(function (response) {
@@ -141,6 +163,10 @@ function App() {
               stockClose={stockCloseData}
               tableData={tableData}
               profileData={profileData}
+              // reportedEPS={reportedEPS}
+              // estimatedEPS={estimatedEPS}
+              // surprisePercentage={surprisePercentage}
+              earnings={earnings}
             />
           </Route>
         </Switch>
@@ -150,6 +176,5 @@ function App() {
     </Router>
   );
 }
-
 
 export default App;
