@@ -23,9 +23,6 @@ function App() {
   
   // Data for earnings
   const [earnings, setearnings] = useState([]);
-  // const [estimatedEPS, setestimatedEPS] = useState([]);
-  // const [surprisePercentage, setsurprisePercentage] = useState([]);
-  
 
   // Data for profile
   const [profileData, setprofileData] = useState([]);
@@ -51,7 +48,6 @@ function App() {
         `https://api.polygon.io/v1/meta/symbols/${stockSymbol}/company?apiKey=REGDCE9oeokuBTeCkEQpYRH81FU_a7if`
       )
       .then((response) => {
-        // console.log(response["data"]);
         setprofileData(response["data"]);
       });
   }, [stockSymbol]);
@@ -65,10 +61,8 @@ function App() {
       )
       .then((response) => {
         let earningsArray = response["data"]["quarterlyEarnings"];
-        // setreportedEPS(earningsArray.slice(0,5).map(data => data.reportedEPS))
         setearnings(earningsArray.slice(0,5))
-        // setestimatedEPS(earningsArray.slice(0,5).map(data => data.estimatedEPS))
-        // setsurprisePercentage(earningsArray.slice(0,5).map(data => data.surprisePercentage))
+        console.log(earningsArray.slice(0,5))
       });
   }, [stockSymbol]);
 
@@ -93,7 +87,6 @@ function App() {
       .request(options)
       .then(function (response) {
         settableData(response.data["values"]);
-        // console.log(response.data["values"]);
         setstockDateData(
           response.data["values"].map((stock) => stock["datetime"])
         );
@@ -102,7 +95,7 @@ function App() {
         );
       })
       .catch(function (error) {
-        // console.error(error);
+        console.error(error);
       });
   }, [stockSymbol]);
 
@@ -134,7 +127,6 @@ function App() {
 
           {/* Route - Home */}
           <Route exact path="/">
-            {/* <div className="overlay"> */}
             <div className="mainContent">
               <div className="leftContent">
                 <h1 className="headline">Beat the market.</h1>
@@ -150,10 +142,8 @@ function App() {
                   />
                 </div>
                 <SearchBarButton className="invisibleButton" />
-                {/* <StockTable tableData={tableData} /> */}
               </div>
             </div>
-            {/* </div> */}
           </Route>
 
           {/* Route - Stock details page */}
@@ -163,9 +153,6 @@ function App() {
               stockClose={stockCloseData}
               tableData={tableData}
               profileData={profileData}
-              // reportedEPS={reportedEPS}
-              // estimatedEPS={estimatedEPS}
-              // surprisePercentage={surprisePercentage}
               earnings={earnings}
             />
           </Route>
