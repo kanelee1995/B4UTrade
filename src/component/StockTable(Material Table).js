@@ -25,23 +25,21 @@ const StockTable = ({ tableData }) => {
     {
       title: "Close",
       field: "close",
-      render: (rowData) => Math.round(rowData.open * 100) / 100,
+      render: (rowData) => Math.round(rowData.close * 100) / 100,
     },
     {
       title: "High",
       field: "high",
-      render: (rowData) => Math.round(rowData.open * 100) / 100,
+      render: (rowData) => Math.round(rowData.high * 100) / 100,
     },
     {
       title: "Low",
       field: "low",
-      render: (rowData) => Math.round(rowData.open * 100) / 100,
+      render: (rowData) => Math.round(rowData.low * 100) / 100,
     },
     {
       title: "Volume",
       field: "volume",
-      // render: (rowData) => rowData.toLocaleString(),
-
     },
   ];
 

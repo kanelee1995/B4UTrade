@@ -4,29 +4,31 @@ import MaterialTable from "material-table";
 const StockFundamental = ({ earnings }) => {
   const columns = [
     {
-      title: "Reported EPS",
-      field: "reportedEPS",
-      // render: (rowData) => rowData.reportedEPS),
+      title: "Quarter",
+      field: "fiscalDateEnding",
     },
     {
-      title: "Reported EPS",
+      title: "Estimated",
       field: "estimatedEPS",
       // render: (rowData) => rowData.map((data) => data.estimatedEPS),
     },
     {
-      title: "Reported EPS",
-      field: "surprisePercentage",
-      // render: (rowData) => rowData.map((data) => data.surprisePercentage),
+      title: "Reported",
+      field: "reportedEPS",
+      // render: (rowData) => rowData.reportedEPS),
     },
+
     {
-      title: "Quarter",
-      // render:()
-    }
+      title: "Surprise %",
+      field: "surprisePercentage",
+      cellStyle: (rowData) => ({
+        color: rowData < 0 ? "red" : "green",
+      }),
+    },
   ];
 
   return (
     <div className="fundamentals">
-
       {/* <p>
         Actual Earnings:{" "}
         {earnings.map((data) => (
