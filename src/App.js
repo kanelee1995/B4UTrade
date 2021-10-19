@@ -20,7 +20,10 @@ function App() {
 
   // Data for table
   const [tableData, settableData] = useState([]);
-  
+
+  // Data for news
+  const [news, setnews] = useState([]);
+
   // Data for earnings
   const [earnings, setearnings] = useState([]);
 
@@ -52,8 +55,18 @@ function App() {
       });
   }, [stockSymbol]);
 
-  // Data fetching for stock fundamentals
+  // Data fetching for stock news
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.polygon.io/v2/reference/news?ticker=${stockSymbol}&limit=10&apiKey=REGDCE9oeokuBTeCkEQpYRH81FU_a7if`
+      )
+      .then((response) => {
+        setnews(response["data"])
+      });
+  }, [stockSymbol]);
 
+  // Data fetching for stock fundamentals
   useEffect(() => {
     axios
       .get(
@@ -61,8 +74,8 @@ function App() {
       )
       .then((response) => {
         let earningsArray = response["data"]["quarterlyEarnings"];
-        setearnings(earningsArray.slice(0,5))
-        console.log(earningsArray.slice(0,5))
+        setearnings(earningsArray.slice(0, 5));
+        // console.log(earningsArray.slice(0,5))
       });
   }, [stockSymbol]);
 
@@ -74,7 +87,7 @@ function App() {
       params: {
         symbol: `${stockSymbol}`,
         interval: "1day",
-        outputsize: "7",
+        outputsize: "30",
         format: "json",
       },
       headers: {
@@ -154,6 +167,7 @@ function App() {
               tableData={tableData}
               profileData={profileData}
               earnings={earnings}
+              news={news}
             />
           </Route>
         </Switch>

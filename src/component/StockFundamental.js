@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import MaterialTable from "material-table";
 
 const StockFundamental = ({ earnings }) => {
@@ -10,12 +9,10 @@ const StockFundamental = ({ earnings }) => {
     {
       title: "Estimated",
       field: "estimatedEPS",
-      // render: (rowData) => rowData.map((data) => data.estimatedEPS),
     },
     {
       title: "Reported",
       field: "reportedEPS",
-      // render: (rowData) => rowData.reportedEPS),
     },
 
     {
@@ -29,20 +26,6 @@ const StockFundamental = ({ earnings }) => {
 
   return (
     <div className="fundamentals">
-      {/* <p>
-        Actual Earnings:{" "}
-        {earnings.map((data) => (
-          <li>{data.reportedEPS}</li>
-        ))}
-        Estimated:{" "}
-        {earnings.map((data) => (
-          <li>{data.estimatedEPS}</li>
-        ))}
-        Surprise %:{" "}
-        {earnings.map((data) => (
-          <li>{data.surprisePercentage}</li>
-        ))}
-      </p> */}
 
       <MaterialTable
         columns={columns}

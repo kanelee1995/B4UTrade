@@ -7,9 +7,9 @@ const StockChart = ({stockDate, stockClose}) => {
       {
         label: "Daily Close",
         data: stockClose,
-        fill: false,
-        backgroundColor: "rgb(255, 99, 132)",
-        borderColor: "rgba(255, 99, 132)",
+        fill: true,
+        backgroundColor: "rgb(71, 254, 63, 0.3)",
+        borderColor: "rgba(71, 254, 63)",
       },
     ],
   };
