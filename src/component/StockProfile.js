@@ -9,7 +9,6 @@ const StockProfile = ({ profileData }) => {
 
       <div className="companyInfo">
         <div className="profileCompanyName">{profileData.symbol}</div>
-        <p>{profileData.name}</p>
         <p>{profileData.description}</p>
         <p>Sector: {profileData.sector}</p>
         <a href={profileData.url}>Company Website </a>

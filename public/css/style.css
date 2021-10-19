@@ -15,6 +15,7 @@
 
 .app p {
   color: var(--fontLight);
+  margin: 2px 0 2px 0;
 }
 
 /* Header */
@@ -268,6 +269,19 @@ a:hover,
 } */
 
 /* Fundamentals */
+
+/* Swithcer for different tabs */
+.Switcher {
+  display: flex;
+  padding: 30px 0 30px 0;
+  justify-content: center;
+}
+.SwitcherTab {
+  padding: 15px 30px 15px 30px;
+  border: 1px solid var(--fontLight);
+  border-radius: 5px;
+  margin: 0px 5px 0px 5px;
+}
 
 .fundamentals {
   background-color: #696868;

@@ -88,7 +88,7 @@ function App() {
       params: {
         symbol: `${stockSymbol}`,
         interval: "1day",
-        outputsize: "30",
+        outputsize: "90",
         format: "json",
       },
       headers: {
