@@ -18,7 +18,7 @@ const StockDetail = ({
       <StockChart stockDate={stockDate} stockClose={stockClose} />
       <StockTable tableData={tableData} />
       <StockFundamental earnings={earnings} />
-      {/* <StockNews news={news} /> */}
+      <StockNews news={news} />
     </div>
   );
 };

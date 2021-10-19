@@ -62,7 +62,8 @@ function App() {
         `https://api.polygon.io/v2/reference/news?ticker=${stockSymbol}&limit=10&apiKey=REGDCE9oeokuBTeCkEQpYRH81FU_a7if`
       )
       .then((response) => {
-        setnews(response["data"])
+        setnews(response["data"]["results"]);
+        console.log(response["data"]["results"])
       });
   }, [stockSymbol]);
 

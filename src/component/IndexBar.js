@@ -6,9 +6,9 @@ const IndexBar = ({ datas }) => {
 
   return (
     <div className="indexBar">
-      <ul className="indexList">
+      <div className="indexList">
         {slicedDatas.map((data) => (
-          <li className="indexBarItem">
+          <p className="indexBarItem">
             {data["ticker"]}
             <span className="whiteSpace">
               {Math.round(data["changesPercentage"] * 100) / 100}%
@@ -16,10 +16,10 @@ const IndexBar = ({ datas }) => {
                 <FontAwesomeIcon icon={faAngleUp} />
               </span>
             </span>
-            <div className="companyName">{data["companyName"]}</div>
-          </li>
+            <p className="companyName">{data["companyName"]}</p>
+          </p>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

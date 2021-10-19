@@ -19,8 +19,9 @@ const StockFundamental = ({ earnings }) => {
       title: "Surprise %",
       field: "surprisePercentage",
       cellStyle: (rowData) => ({
-        color: rowData < 0 ? "red" : "green",
+        color: rowData < 0 ? "red" : "rgb(6, 214, 160)",
       }),
+
     },
   ];
 
@@ -33,8 +34,8 @@ const StockFundamental = ({ earnings }) => {
         title="Earnings"
         options={{
           search: false,
-          headerStyle: { backgroundColor: "#696868", color: "#FFF" },
-          rowStyle: { backgroundColor: "#696868", color: "#FFF" },
+          headerStyle: { backgroundColor: "#343a40", color: "#e9ecef" },
+          rowStyle: { backgroundColor: "#343a40", color: "#e9ecef" },
         }}
       />
     </div>
