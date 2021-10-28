@@ -16,6 +16,9 @@ const StockTable = ({ tableData }) => {
       render: (rowData) =>
         changeResultToPercent(changeCalculator(rowData.open, rowData.close)) +
         "%",
+      // cellStyle: (rowData) => ({
+      //   color: rowData < 0 ? "red" : "rgb(6, 214, 160)",
+      // }),
     },
     {
       title: "Open",
@@ -44,7 +47,7 @@ const StockTable = ({ tableData }) => {
   ];
 
   return (
-    <div>
+    <div className="stockTable">
       <MaterialTable
         columns={columns}
         data={tableData}

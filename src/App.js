@@ -63,19 +63,20 @@ function App() {
       )
       .then((response) => {
         setnews(response["data"]["results"]);
-        console.log(response["data"]["results"])
+        console.log(response["data"]["results"]);
       });
   }, [stockSymbol]);
 
   // Data fetching for stock fundamentals
   useEffect(() => {
+    // let earningsArray = response["data"]["quarterlyEarnings"];
+
     axios
       .get(
         `https://www.alphavantage.co/query?function=EARNINGS&symbol=${stockSymbol}&apikey=QHHEJX1I72MCYTJR`
       )
       .then((response) => {
-        let earningsArray = response["data"]["quarterlyEarnings"];
-        setearnings(earningsArray.slice(0, 5));
+        setearnings(response["data"]["quarterlyEarnings"].slice(0, 5));
         // console.log(earningsArray.slice(0,5))
       });
   }, [stockSymbol]);
@@ -100,12 +101,13 @@ function App() {
     axios
       .request(options)
       .then(function (response) {
+        console.log();
         settableData(response.data["values"]);
         setstockDateData(
-          response.data["values"].map((stock) => stock["datetime"])
+          response.data["values"].reverse().map((stock) => stock["datetime"])
         );
         setstockCloseData(
-          response.data["values"].map((stock) => stock["close"])
+          response.data["values"].reverse().map((stock) => stock["close"])
         );
       })
       .catch(function (error) {
@@ -127,53 +129,55 @@ function App() {
   return (
     <Router>
       <div className="app">
-        {/* Navbar */}
-        <div className="header">
-          <Link to="/" className="title">
-            TradeAndLog
-          </Link>
-          <IndexBar datas={mostGainerData} />
-        </div>
-        {/* Navbar end */}
+        <div className="mainPage">
+          {/* Navbar */}
+          <div className="header">
+            <Link to="/" className="title">
+              TradeAndLog
+            </Link>
+            <IndexBar datas={mostGainerData} />
+          </div>
+          {/* Navbar end */}
 
-        <Switch>
-          {/* Main content */}
+          <Switch>
+            {/* Main content */}
 
-          {/* Route - Home */}
-          <Route exact path="/">
-            <div className="mainContent">
-              <div className="leftContent">
-                <h1 className="headline">Beat the market.</h1>
-                <h2 className="subheadline">
-                  Get the lastest historical & fundamental data of a stock.
-                </h2>
-                <div className="searchContainer">
-                  <FontAwesomeIcon icon={faSearch} className={"searchIcon"} />
-                  <SearchBar
-                    userInput={userInput}
-                    inputHandle={inputHandler}
-                    keypressHandle={keypressHandler}
-                  />
+            {/* Route - Home */}
+            <Route exact path="/">
+              <div className="mainContent">
+                <div className="leftContent">
+                  <h1 className="headline">Beat the market.</h1>
+                  <h2 className="subheadline">
+                    Get the lastest historical & fundamental data of a stock.
+                  </h2>
+                  <div className="searchContainer">
+                    <FontAwesomeIcon icon={faSearch} className={"searchIcon"} />
+                    <SearchBar
+                      userInput={userInput}
+                      inputHandle={inputHandler}
+                      keypressHandle={keypressHandler}
+                    />
+                  </div>
+                  <SearchBarButton className="invisibleButton" />
                 </div>
-                <SearchBarButton className="invisibleButton" />
               </div>
-            </div>
-          </Route>
+            </Route>
 
-          {/* Route - Stock details page */}
-          <Route exact path="/stockdetail">
-            <StockDetail
-              stockDate={stockDateData}
-              stockClose={stockCloseData}
-              tableData={tableData}
-              profileData={profileData}
-              earnings={earnings}
-              news={news}
-            />
-          </Route>
-        </Switch>
+            {/* Route - Stock details page */}
+            <Route exact path="/stockdetail">
+              <StockDetail
+                stockDate={stockDateData}
+                stockClose={stockCloseData}
+                tableData={tableData}
+                profileData={profileData}
+                earnings={earnings}
+                news={news}
+              />
+            </Route>
+          </Switch>
 
-        {/* Main content end */}
+          {/* Main content end */}
+        </div>
       </div>
     </Router>
   );

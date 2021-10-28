@@ -9,7 +9,7 @@ const StockNews = ({ news }) => {
     {
       title: "Tickers",
       field: "tickers",
-      // render: (rowData) => {(rowData.join())},
+      render: (rowData) => (rowData.tickers.join()),
     },
     {
       title: "Title",
@@ -19,7 +19,7 @@ const StockNews = ({ news }) => {
   ];
 
   return (
-    <div className="news">
+    <div className="stockTable">
       <MaterialTable
         columns={columns}
         data={news}

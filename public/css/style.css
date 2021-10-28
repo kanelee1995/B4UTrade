@@ -7,9 +7,6 @@
 }
 
 .app {
-  /* background-color: #1a1919; */
-  min-height: 100vh;
-  min-width: 100vw;
   overflow: hidden;
 }
 
@@ -21,24 +18,25 @@
 /* Header */
 
 .header {
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 100vw;
-  background-color: rgb(29, 29, 29);
+  /* width: 100vw; */
+  /* background-color: rgb(29, 29, 29); */
   box-shadow: var(--backgroundDark);
   text-align: center;
-  height: 5vh;
+  height: 10vh;
+  padding: 20px 70px 0px 70px;
 }
 
 .title {
   text-decoration: none;
-  margin-left: 70px;
   color: var(--fontLight);
   /* padding: 70px 0px 0px 70px; */
   font-family: var(--topicFont);
-  font-size: larger;
+  font-size: 1.8rem;
   font-weight: bold;
   display: inline-block;
 }
@@ -46,28 +44,25 @@
 /* MainContent */
 
 .mainContent {
-  background-image: url("./image/background.png");
+  /* background-image: url("./image/background.png");
   background-size: cover;
-  background-position: top;
+  background-position: right;
   background-repeat: no-repeat;
+  background-color: #14213d; */
   display: flex;
   flex-direction: row;
   width: 100vw;
   width: auto;
-  height: 95vh;
+  height: 90vh;
+  padding-left: 70px;
 }
 
-.mainContent::after {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(10, 10, 10, 0.651);
-  /* z-index: 999;
-  cursor: default;  */
+.mainPage {
+  background-image: url("./image/background.png");
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  /* background-color: #14213d; */
 }
 
 .leftContent {
@@ -168,6 +163,7 @@ h2 {
   list-style: none;
   display: inline-block;
   padding: 0px 40px 0px 0px;
+  text-align: left;
 }
 
 .whiteSpace {
@@ -190,28 +186,36 @@ li {
 
 .companyName {
   font-size: 0.8rem;
+  color: grey !important;
 }
 
 /* Stock Detail page */
+.detailPage {
+  background-image: url("./image/background-plain.png");
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+}
 
 .stockDetail {
-  background-color: var(--backgroundDark);
+  background-color: rgba(2, 2, 2, 0.61);
   display: grid;
-  padding: 0 50px 0 50px;
+  margin: 50px 50px 0 50px;
+  border-radius: 15px;
 }
 
 /* Profile */
 .stockProfile {
   margin: 25px 0 25px 0;
   display: flex;
-  padding: 15px 0px 30px 30px;
-  border-radius: 15px;
+  padding: 15px 30px 30px 30px;
+  /* border-radius: 15px; */
 }
 
 .companyLogo {
   display: flex;
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   padding: 20px;
   background-color: var(--fontLight);
   align-self: center;
@@ -236,6 +240,7 @@ li {
 .companyInfo {
   margin-left: 25px;
   width: auto;
+  max-width: 100%;
 }
 
 .companyInfo h2 {
@@ -263,10 +268,24 @@ a:hover,
   text-shadow: 0 0 10px #06d6a0;
 }
 
+.stockProfile .companyInfo p {
+  margin: 5px 0 5px 0;
+}
+
+.stockProfile .companyInfo a {
+  color: #06d6a0;
+}
+
+
 /* Chart */
-/* .stockChart {
-  width: 80vw;
-} */
+.stockChart {
+  padding: 0 40px 0 40px;
+}
+
+/* Table */
+.stockTable {
+  padding: 0 40px 0 40px;
+}
 
 /* Fundamentals */
 
@@ -281,8 +300,4 @@ a:hover,
   border: 1px solid var(--fontLight);
   border-radius: 5px;
   margin: 0px 5px 0px 5px;
-}
-
-.fundamentals {
-  background-color: #696868;
 }

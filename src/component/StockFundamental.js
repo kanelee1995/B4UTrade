@@ -26,7 +26,7 @@ const StockFundamental = ({ earnings }) => {
   ];
 
   return (
-    <div className="fundamentals">
+    <div className="stockTable">
 
       <MaterialTable
         columns={columns}
