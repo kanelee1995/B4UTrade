@@ -1,2 +1,2 @@
-# stock-performance
+# B4UTrade
  Check stock performance
