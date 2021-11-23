@@ -8,9 +8,13 @@
 
 .app {
   overflow: hidden;
+  background-image: url("./image/background.png");
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
 }
 
-.app p {
+p {
   color: var(--fontLight);
   margin: 2px 0 2px 0;
 }
@@ -23,6 +27,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  /* flex-wrap: wrap; */
   /* width: 100vw; */
   /* background-color: rgb(29, 29, 29); */
   box-shadow: var(--backgroundDark);
@@ -40,116 +45,9 @@
   font-weight: bold;
   display: inline-block;
 }
-
-/* MainContent */
-
-.mainContent {
-  /* background-image: url("./image/background.png");
-  background-size: cover;
-  background-position: right;
-  background-repeat: no-repeat;
-  background-color: #14213d; */
-  display: flex;
-  flex-direction: row;
-  width: 100vw;
-  width: auto;
-  height: 90vh;
-  padding-left: 70px;
+.indexBar {
+  width: 100%;
 }
-
-.mainPage {
-  background-image: url("./image/background.png");
-  background-size: cover;
-  background-position: right;
-  background-repeat: no-repeat;
-  /* background-color: #14213d; */
-}
-
-.leftContent {
-  /* width: 50vw; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-/* Headline */
-
-h1 {
-  color: var(--fontLight);
-  font-size: 5em !important;
-  font-family: "Epilogue", sans-serif;
-  margin: 0px !important;
-}
-
-h2 {
-  color: var(--fontLight);
-  font-size: 1.5em !important;
-  font-family: var(--topicFont);
-  font-weight: 300;
-}
-
-/* Search Bar */
-
-.searchContainer {
-  padding: 15px 0px 5px 0px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  /* margin-right: 70px; */
-  position: relative;
-}
-
-.searchBar {
-  height: 60px;
-  width: 200px;
-  border-radius: 30px;
-  background: var(--green);
-  border: none;
-  text-align: left;
-  color: rgb(20, 20, 20);
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  outline: none;
-  padding-left: 40px;
-  font-family: "Epilogue", sans-serif;
-  font-size: x-large;
-}
-
-.searchBar:focus {
-  border: none;
-}
-
-.searchBar::-webkit-input-placeholder {
-  /* padding-right: 15px; */
-  color: rgba(2, 2, 2, 0.61);
-  font-size: large;
-}
-
-.searchBar::-webkit-input-placeholder:focus {
-  border-bottom: var(--fontLight) 1px solid;
-}
-
-.searchIcon {
-  color: rgb(20, 20, 20);
-  position: absolute;
-  /* top: 47%; */
-  left: 11vw;
-  bottom: 30px;
-}
-
-.searchButton {
-  width: 0px;
-  height: 0px;
-  padding: 0px;
-  margin: 0px;
-  border-width: 0px;
-}
-
-.invisibleButton {
-  display: none;
-}
-
 .indexBarTitle {
   color: var(--fontLight);
   font-size: 1.25em;
@@ -187,6 +85,101 @@ li {
 .companyName {
   font-size: 0.8rem;
   color: grey !important;
+}
+
+/* MainContent */
+
+.mainContent {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  width: auto;
+  height: 90vh;
+  padding-left: 70px;
+}
+
+.leftContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 70px;
+  padding-bottom: 80px;
+  flex-wrap: wrap;
+}
+
+/* Headline */
+
+.headline {
+  color: var(--fontLight);
+  font-size: 6.7em;
+  font-family: "Raleway", sans-serif;
+  margin: 0px;
+}
+
+.subheadline {
+  color: var(--fontLight);
+  font-size: 1.5em;
+  font-family: var(--topicFont);
+  font-weight: 500;
+}
+
+/* Search Bar */
+
+.searchContainer {
+  padding: 15px 0px 5px 0px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+
+.searchBar {
+  height: 30px;
+  width: 200px;
+  border-radius: 30px;
+  background: #00000000;
+  border: 0.15rem solid var(--green);
+  text-align: left;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  padding-left: 20px;
+  font-family: "Epilogue", sans-serif;
+  font-size: x-large;
+  color: var(--fontLight);
+}
+
+.searchBar::-webkit-input-placeholder {
+  /* padding-right: 15px; */
+  /* color: rgba(2, 2, 2, 0.61); */
+  color: rgba(255, 255, 255, 0.61);
+  font-size: 15px;
+}
+
+.searchBar::-webkit-input-placeholder:focus {
+  border-bottom: var(--fontLight) 1px solid;
+}
+
+.searchIcon {
+  /* color: rgb(20, 20, 20); */
+  color: rgb(255, 255, 255, 0.61);
+  position: absolute;
+  /* top: 47%; */
+  left: 14rem;
+  bottom: 15px;
+}
+
+.searchButton {
+  width: 0px;
+  height: 0px;
+  padding: 0px;
+  margin: 0px;
+  border-width: 0px;
+}
+
+.invisibleButton {
+  display: none;
 }
 
 /* Stock Detail page */
@@ -276,10 +269,18 @@ a:hover,
   color: #06d6a0;
 }
 
-
 /* Chart */
+
+canvas {
+  height: 400px;
+}
+
 .stockChart {
   padding: 0 40px 0 40px;
+}
+
+.stockChartMobile {
+  display: none;
 }
 
 /* Table */
@@ -300,4 +301,124 @@ a:hover,
   border: 1px solid var(--fontLight);
   border-radius: 5px;
   margin: 0px 5px 0px 5px;
+}
+
+/* Responsive */
+
+@media only screen and (max-width: 600px) {
+  /* mobile nav */
+  .header {
+    padding: 10px 0 10px 0;
+    height: 100%;
+  }
+
+  .title {
+    margin: auto;
+  }
+
+  .companyName {
+    display: none;
+  }
+
+  .indexBar {
+    display: none;
+  }
+
+  .indexBarItem {
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+  }
+
+  .whiteSpace {
+    padding: 0 2px 0 5px;
+  }
+
+  /* mobile main page */
+
+  .mainContent {
+    background-image: url(./image/mBG.png);
+    background-position: center;
+    background-size: 200%;
+    background-position-y: 70%;
+    padding: 0 50px 0 80px;
+  }
+
+  .leftContent {
+    align-self: flex-end;
+    padding: 0 0 160px 0;
+  }
+
+  .searchBar {
+    height: 20px;
+    max-width: 100%;
+    border-radius: 30px;
+    padding-left: 10px;
+    font-size: 1rem;
+    color: var(--fontLight);
+  }
+
+  .headline {
+    font-size: 3rem;
+    margin-bottom: 2vh;
+  }
+
+  .subheadline {
+    font-size: 1rem;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-bottom: 1.5vh;
+    font-weight: 600;
+  }
+
+  .searchBar::-webkit-input-placeholder {
+    color: var(--fontLight);
+    font-size: 250;
+    font-weight: 300;
+  }
+
+  .searchBar::-webkit-input-placeholder:focus {
+    border-bottom: var(--fontLight) 1px solid;
+  }
+
+  .searchIcon {
+    color: var(--fontLight);
+    position: absolute;
+    left: 50vw;
+    bottom: 1.2vh;
+  }
+
+  .searchButton {
+    width: 0px;
+    height: 0px;
+    padding: 0px;
+    margin: 0px;
+    border-width: 0px;
+  }
+
+  .invisibleButton {
+    display: none;
+  }
+
+  /* Detail page */
+  canvas {
+    height: 300px;
+  }
+
+  .stockChart {
+    display: none;
+  }
+
+  .stockChartMobile {
+    display: block;
+  }
+  .stockDetail {
+    margin: 20px 20px 0 20px;
+    border-radius: 15px;
+  }
+
+  .stockProfile {
+    max-width: 80vw;
+    padding: 0;
+  }
+
 }

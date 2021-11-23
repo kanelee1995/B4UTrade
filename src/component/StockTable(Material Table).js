@@ -20,6 +20,10 @@ const StockTable = ({ tableData }) => {
       //   color: rowData < 0 ? "red" : "rgb(6, 214, 160)",
       // }),
     },
+    // {
+    //   title: "Previous Close",
+    //   render: (rowData) => Math.round(rowData.open * 100) / 100,
+    // },
     {
       title: "Open",
       field: "open",

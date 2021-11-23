@@ -1,4 +1,5 @@
 import StockChart from "./component/StockChart";
+import StockChartMobile from "./component/StockChartMobile";
 import StockFundamental from "./component/StockFundamental";
 import StockNews from "./component/StockNews";
 import StockProfile from "./component/StockProfile";
@@ -15,6 +16,8 @@ const StockDetail = ({
   profileData,
   stockDate,
   stockClose,
+  stockDateM,
+  stockCloseM,
   tableData,
   earnings,
   news,
@@ -27,6 +30,7 @@ const StockDetail = ({
         <div className="stockDetail">
           <StockProfile profileData={profileData} />
           <StockChart stockDate={stockDate} stockClose={stockClose} />
+          <StockChartMobile stockDateM={stockDateM} stockCloseM={stockCloseM} />
           <div className="Switcher">
             <Link to={`${url}`} className="SwitcherTab">
               Daily Data

@@ -1,12 +1,12 @@
 import { Line } from "react-chartjs-2";
 
-const StockChart = ({stockDate, stockClose}) => {
+const StockChart = ({stockDateM, stockCloseM}) => {
   const data = {
-    labels: stockDate,
+    labels: stockDateM,
     datasets: [
       {
         label: "Daily Close",
-        data: stockClose,
+        data: stockCloseM,
         fill: true,
         backgroundColor: "rgb(6, 214, 160, 0.3)",
         borderColor: "#06d6a0",
@@ -28,7 +28,7 @@ const StockChart = ({stockDate, stockClose}) => {
   };
 
   return (
-    <div className="stockChart">
+    <div className="stockChartMobile">
       <Line data={data} options={options} />
     </div>
   );
