@@ -58,8 +58,8 @@ const StockTable = ({ tableData }) => {
         title="Daily Open/Close"
         options={{
           search: false,
-          headerStyle: { backgroundColor: "#343a40", color: "#e9ecef" },
-          rowStyle: { backgroundColor: "#343a40", color: "#e9ecef" },
+          headerStyle: { backgroundColor: "#00000000", color: "#e9ecef" },
+          // rowStyle: { backgroundColor: "#00000015", color: "#e9ecef" },
         }}
       />
     </div>

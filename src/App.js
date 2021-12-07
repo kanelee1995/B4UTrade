@@ -12,7 +12,7 @@ import SearchBarButton from "./component/SearchBarButton";
 function App() {
   // User input control & keydown
   const [userInput, setuserInput] = useState("");
-  const [stockSymbol, setstockSymbol] = useState("TSLA");
+  const [stockSymbol, setstockSymbol] = useState("AAPL");
 
   // Data for chart
   const [stockDateData, setstockDateData] = useState([]);
@@ -73,17 +73,40 @@ function App() {
 
   // Data fetching for stock fundamentals
   useEffect(() => {
-    // let earningsArray = response["data"]["quarterlyEarnings"];
-
     axios
       .get(
         `https://www.alphavantage.co/query?function=EARNINGS&symbol=${stockSymbol}&apikey=QHHEJX1I72MCYTJR`
       )
       .then((response) => {
-        setearnings(response["data"]["quarterlyEarnings"].slice(0, 5));
+        let earningsArray = response["data"]["quarterlyEarnings"];
+        setearnings(earningsArray.slice(0, 5));
         // console.log(earningsArray.slice(0,5))
       });
+
   }, [stockSymbol]);
+
+  // useEffect(() => {
+  //   const request = require("request");
+  //   const url = `https://www.alphavantage.co/query?function=EARNINGS&symbol=${stockSymbol}&apikey=QHHEJX1I72MCYTJR`;
+
+  //   request.get(
+  //     {
+  //       url: url,
+  //       json: true,
+  //       headers: { "User-Agent": "request" },
+  //     },
+  //     (err, res, data) => {
+  //       if (err) {
+  //         console.log("Error:", err);
+  //       } else if (res.statusCode !== 200) {
+  //         console.log("Status:", res.statusCode);
+  //       } else {
+  //         // data is successfully parsed as a JSON object:
+  //         console.log(data);
+  //       }
+  //     }
+  //   );
+  // }, [stockSymbol]);
 
   // Data fetching for stock chart and table
   useEffect(() => {
@@ -105,10 +128,9 @@ function App() {
     axios
       .request(options)
       .then(function (response) {
-        console.log();
-        settableData(response.data["values"]);
+        settableData(response.data["values"].reverse());
         setstockDateData(
-          response.data["values"].reverse().map((stock) => stock["datetime"])
+          response.data["values"].map((stock) => stock["datetime"])
         );
         setstockCloseData(
           response.data["values"].map((stock) => stock["close"])
@@ -119,8 +141,8 @@ function App() {
       });
   }, [stockSymbol]);
 
-   // Data fetching for stock chart and table Mobile
-   useEffect(() => {
+  // Data fetching for stock chart and table Mobile
+  useEffect(() => {
     const options = {
       method: "GET",
       url: "https://twelve-data1.p.rapidapi.com/time_series",

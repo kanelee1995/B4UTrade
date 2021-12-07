@@ -9,12 +9,12 @@ const StockNews = ({ news }) => {
     {
       title: "Tickers",
       field: "tickers",
-      render: (rowData) => (rowData.tickers.join()),
+      render: (rowData) => rowData.tickers.slice(0,3).join(),
     },
     {
       title: "Title",
       field: "title",
-      render: rowData => <a href={rowData.article_url}>{rowData.title}</a>,
+      render: (rowData) => <a href={rowData.article_url}>{rowData.title}</a>,
     },
   ];
 
@@ -26,8 +26,8 @@ const StockNews = ({ news }) => {
         title="Ticker News"
         options={{
           search: false,
-          headerStyle: { backgroundColor: "#343a40", color: "#e9ecef" },
-          rowStyle: { backgroundColor: "#343a40", color: "#e9ecef" },
+          headerStyle: { backgroundColor: "#00000000", color: "#e9ecef" },
+          // rowStyle: { backgroundColor: "#343a40", color: "#e9ecef" },
         }}
       />
     </div>
