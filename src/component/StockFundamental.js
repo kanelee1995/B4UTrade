@@ -1,4 +1,6 @@
 import MaterialTable from "material-table";
+import { motion } from "framer-motion";
+
 
 const StockFundamental = ({ earnings }) => {
   const columns = [
@@ -27,8 +29,12 @@ const StockFundamental = ({ earnings }) => {
   ];
 
   return (
-    <div className="stockTable">
-      <MaterialTable
+    <motion.div
+    animate={{ opacity: 1 }}
+    initial={{ opacity: 0 }}
+    exit={{ opacity: 0 }}
+    className="stockTable"
+  >      <MaterialTable
         columns={columns}
         data={earnings}
         title="Earnings"
@@ -38,7 +44,7 @@ const StockFundamental = ({ earnings }) => {
           // rowStyle: { backgroundColor: "#343a40", color: "#e9ecef" },
         }}
       />
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,4 +1,6 @@
 import MaterialTable from "material-table";
+import { motion } from "framer-motion";
+
 
 const StockTable = ({ tableData }) => {
   const changeCalculator = (open, close) => {
@@ -51,7 +53,12 @@ const StockTable = ({ tableData }) => {
   ];
 
   return (
-    <div className="stockTable">
+    <motion.div
+    animate={{ opacity: 1 }}
+    initial={{ opacity: 0 }}
+    exit={{ opacity: 0 }}
+    className="stockTable"
+  >  
       <MaterialTable
         columns={columns}
         data={tableData}
@@ -62,7 +69,7 @@ const StockTable = ({ tableData }) => {
           // rowStyle: { backgroundColor: "#00000015", color: "#e9ecef" },
         }}
       />
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -82,31 +83,7 @@ function App() {
         setearnings(earningsArray.slice(0, 5));
         // console.log(earningsArray.slice(0,5))
       });
-
   }, [stockSymbol]);
-
-  // useEffect(() => {
-  //   const request = require("request");
-  //   const url = `https://www.alphavantage.co/query?function=EARNINGS&symbol=${stockSymbol}&apikey=QHHEJX1I72MCYTJR`;
-
-  //   request.get(
-  //     {
-  //       url: url,
-  //       json: true,
-  //       headers: { "User-Agent": "request" },
-  //     },
-  //     (err, res, data) => {
-  //       if (err) {
-  //         console.log("Error:", err);
-  //       } else if (res.statusCode !== 200) {
-  //         console.log("Status:", res.statusCode);
-  //       } else {
-  //         // data is successfully parsed as a JSON object:
-  //         console.log(data);
-  //       }
-  //     }
-  //   );
-  // }, [stockSymbol]);
 
   // Data fetching for stock chart and table
   useEffect(() => {
@@ -202,7 +179,12 @@ function App() {
 
           {/* Route - Home */}
           <Route exact path="/">
-            <div className="mainContent">
+          <motion.div
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              exit={{ opacity: 0 }}
+              className="mainContent"
+            >
               <div className="leftContent">
                 <h1 className="headline">Beat the market.</h1>
                 <h2 className="subheadline">
@@ -218,21 +200,27 @@ function App() {
                 </div>
                 <SearchBarButton className="invisibleButton" />
               </div>
-            </div>
+            </motion.div>
           </Route>
 
           {/* Route - Stock details page */}
           <Route exact path="/stockdetail">
-            <StockDetail
-              stockDate={stockDateData}
-              stockClose={stockCloseData}
-              stockDateM={stockDateDataM}
-              stockCloseM={stockCloseDataM}
-              tableData={tableData}
-              profileData={profileData}
-              earnings={earnings}
-              news={news}
-            />
+            {/* <motion.div
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              exit={{ opacity: 0 }}
+            > */}
+              <StockDetail
+                stockDate={stockDateData}
+                stockClose={stockCloseData}
+                stockDateM={stockDateDataM}
+                stockCloseM={stockCloseDataM}
+                tableData={tableData}
+                profileData={profileData}
+                earnings={earnings}
+                news={news}
+              />
+            {/* </motion.div> */}
           </Route>
         </Switch>
 
@@ -241,5 +229,27 @@ function App() {
     </Router>
   );
 }
+
+// function Homepage() {
+//   return (
+//     <div className="mainContent">
+//       <div className="leftContent">
+//         <h1 className="headline">Beat the market.</h1>
+//         <h2 className="subheadline">
+//           Get the lastest historical & fundamental data of a stock.
+//         </h2>
+//         <div className="searchContainer">
+//           <FontAwesomeIcon icon={faSearch} className={"searchIcon"} />
+//           <SearchBar
+//             userInput={userInput}
+//             inputHandle={inputHandler}
+//             keypressHandle={keypressHandler}
+//           />
+//         </div>
+//         <SearchBarButton className="invisibleButton" />
+//       </div>
+//     </div>
+//   );
+// }
 
 export default App;

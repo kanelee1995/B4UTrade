@@ -15,8 +15,8 @@
   background-size: cover;
   background-position: right;
   background-repeat: no-repeat;
-  grid-template-columns: 10% auto 10%;
-  grid-template-rows: 10% 30% auto;
+  grid-template-columns: 10vh auto 10vh;
+  grid-template-rows: 10vh 30vh auto;
   grid-template-areas:
     ". header ."
     ". mainContent ."
@@ -181,9 +181,9 @@ li {
 }
 
 .stockDetail {
-  background-color: rgba(2, 2, 2, 0.61);
+  background-color: rgba(2, 2, 2, 0.4);
   display: grid;
-  /* margin: 50px 50px 0 50px; */
+  /* margin: 0 0 50px 0; */
   border-radius: 15px;
   height: 100%;
 }
@@ -299,6 +299,10 @@ canvas {
 }
 .MuiIconButton-root {
   color: var(--fontLight) !important;
+}
+
+.MuiPaper-rounded {
+  border-radius: 10px !important;
 }
 
 /* Fundamentals */
