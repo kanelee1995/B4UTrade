@@ -310,8 +310,8 @@ canvas {
 /* Swithcer for different tabs */
 .Switcher {
   display: flex;
-  padding: 30px 0 30px 0;
-  justify-content: center;
+  padding: 30px 40px 30px 40px;
+  justify-content: flex-start;
 }
 .SwitcherTab {
   padding: 15px 30px 15px 30px;

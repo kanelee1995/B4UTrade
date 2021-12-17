@@ -13,7 +13,7 @@ import SearchBarButton from "./component/SearchBarButton";
 function App() {
   // User input control & keydown
   const [userInput, setuserInput] = useState("");
-  const [stockSymbol, setstockSymbol] = useState("AAPL");
+  // const [stockSymbol, setstockSymbol] = useState("TSLA");
 
   // Data for chart
   const [stockDateData, setstockDateData] = useState([]);
@@ -38,13 +38,16 @@ function App() {
   // Data for index bar
   const [mostGainerData, setMostGainerData] = useState([]);
 
+  const userInputStorage = localStorage.getItem("inputValue");
+
   const inputHandler = (e) => {
     setuserInput(e.target.value);
   };
-
+  
   const keypressHandler = (e) => {
     if (e.key === "Enter") {
-      setstockSymbol(userInput);
+      // setstockSymbol(userInputStorage)
+      localStorage.setItem("inputValue", userInput);
       document.getElementById("searchButton").click();
     }
   };
@@ -53,37 +56,34 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        `https://api.polygon.io/v1/meta/symbols/${stockSymbol}/company?apiKey=REGDCE9oeokuBTeCkEQpYRH81FU_a7if`
+        `https://api.polygon.io/v1/meta/symbols/${userInputStorage}/company?apiKey=REGDCE9oeokuBTeCkEQpYRH81FU_a7if`
       )
       .then((response) => {
         setprofileData(response["data"]);
       });
-  }, [stockSymbol]);
+  }, [userInputStorage]);
 
   // Data fetching for stock news
   useEffect(() => {
     axios
       .get(
-        `https://api.polygon.io/v2/reference/news?ticker=${stockSymbol}&limit=10&apiKey=REGDCE9oeokuBTeCkEQpYRH81FU_a7if`
+        `https://api.polygon.io/v2/reference/news?ticker=${userInputStorage}&limit=10&apiKey=REGDCE9oeokuBTeCkEQpYRH81FU_a7if`
       )
       .then((response) => {
         setnews(response["data"]["results"]);
-        console.log(response["data"]["results"]);
       });
-  }, [stockSymbol]);
+  }, [userInputStorage]);
 
   // Data fetching for stock fundamentals
   useEffect(() => {
     axios
       .get(
-        `https://www.alphavantage.co/query?function=EARNINGS&symbol=${stockSymbol}&apikey=QHHEJX1I72MCYTJR`
+        `https://www.alphavantage.co/query?function=EARNINGS&symbol=${userInputStorage}&apikey=QHHEJX1I72MCYTJR`
       )
       .then((response) => {
-        let earningsArray = response["data"]["quarterlyEarnings"];
-        setearnings(earningsArray.slice(0, 5));
-        // console.log(earningsArray.slice(0,5))
+        setearnings(response["data"]["quarterlyEarnings"]);
       });
-  }, [stockSymbol]);
+  }, [userInputStorage]);
 
   // Data fetching for stock chart and table
   useEffect(() => {
@@ -91,7 +91,7 @@ function App() {
       method: "GET",
       url: "https://twelve-data1.p.rapidapi.com/time_series",
       params: {
-        symbol: `${stockSymbol}`,
+        symbol: `${userInputStorage}`,
         interval: "1day",
         outputsize: "90",
         format: "json",
@@ -116,7 +116,7 @@ function App() {
       .catch(function (error) {
         console.error(error);
       });
-  }, [stockSymbol]);
+  }, [userInputStorage]);
 
   // Data fetching for stock chart and table Mobile
   useEffect(() => {
@@ -124,7 +124,7 @@ function App() {
       method: "GET",
       url: "https://twelve-data1.p.rapidapi.com/time_series",
       params: {
-        symbol: `${stockSymbol}`,
+        symbol: `${userInputStorage}`,
         interval: "1day",
         outputsize: "30",
         format: "json",
@@ -149,7 +149,7 @@ function App() {
       .catch(function (error) {
         console.error(error);
       });
-  }, [stockSymbol]);
+  }, [userInputStorage]);
 
   // Data fetching for main page index bar
   useEffect(() => {
@@ -179,7 +179,7 @@ function App() {
 
           {/* Route - Home */}
           <Route exact path="/">
-          <motion.div
+            <motion.div
               animate={{ opacity: 1 }}
               initial={{ opacity: 0 }}
               exit={{ opacity: 0 }}
@@ -210,16 +210,16 @@ function App() {
               initial={{ opacity: 0 }}
               exit={{ opacity: 0 }}
             > */}
-              <StockDetail
-                stockDate={stockDateData}
-                stockClose={stockCloseData}
-                stockDateM={stockDateDataM}
-                stockCloseM={stockCloseDataM}
-                tableData={tableData}
-                profileData={profileData}
-                earnings={earnings}
-                news={news}
-              />
+            <StockDetail
+              stockDate={stockDateData}
+              stockClose={stockCloseData}
+              stockDateM={stockDateDataM}
+              stockCloseM={stockCloseDataM}
+              tableData={tableData}
+              profileData={profileData}
+              earnings={earnings}
+              news={news}
+            />
             {/* </motion.div> */}
           </Route>
         </Switch>

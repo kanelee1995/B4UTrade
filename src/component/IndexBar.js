@@ -8,7 +8,7 @@ const IndexBar = ({ datas }) => {
     <div className="indexBar">
       <div className="indexList">
         {slicedDatas.map((data) => (
-          <div className="indexBarItem">
+          <div className="indexBarItem" key={data["ticker"]}>
             {data["ticker"]}
             <span className="whiteSpace">
               {Math.round(data["changesPercentage"] * 100) / 100}%
