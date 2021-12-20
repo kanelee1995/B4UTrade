@@ -13,143 +13,22 @@ import SearchBarButton from "./component/SearchBarButton";
 function App() {
   // User input control & keydown
   const [userInput, setuserInput] = useState("");
-  // const [stockSymbol, setstockSymbol] = useState("TSLA");
-
-  // Data for chart
-  const [stockDateData, setstockDateData] = useState([]);
-  const [stockCloseData, setstockCloseData] = useState([]);
-
-  // Data for chart Mobile
-  const [stockDateDataM, setstockDateDataM] = useState([]);
-  const [stockCloseDataM, setstockCloseDataM] = useState([]);
-
-  // Data for table
-  const [tableData, settableData] = useState([]);
-
-  // Data for news
-  const [news, setnews] = useState([]);
-
-  // Data for earnings
-  const [earnings, setearnings] = useState([]);
-
-  // Data for profile
-  const [profileData, setprofileData] = useState([]);
+  const [stockSymbol, setstockSymbol] = useState("AAPL");
 
   // Data for index bar
   const [mostGainerData, setMostGainerData] = useState([]);
 
-  const userInputStorage = localStorage.getItem("inputValue");
-
   const inputHandler = (e) => {
     setuserInput(e.target.value);
   };
-  
+
   const keypressHandler = (e) => {
     if (e.key === "Enter") {
-      // setstockSymbol(userInputStorage)
-      localStorage.setItem("inputValue", userInput);
+      setstockSymbol(userInput);
+      // localStorage.setItem("inputValue", userInput);
       document.getElementById("searchButton").click();
     }
   };
-
-  // Data fetching for stock profile
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.polygon.io/v1/meta/symbols/${userInputStorage}/company?apiKey=REGDCE9oeokuBTeCkEQpYRH81FU_a7if`
-      )
-      .then((response) => {
-        setprofileData(response["data"]);
-      });
-  }, [userInputStorage]);
-
-  // Data fetching for stock news
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.polygon.io/v2/reference/news?ticker=${userInputStorage}&limit=10&apiKey=REGDCE9oeokuBTeCkEQpYRH81FU_a7if`
-      )
-      .then((response) => {
-        setnews(response["data"]["results"]);
-      });
-  }, [userInputStorage]);
-
-  // Data fetching for stock fundamentals
-  useEffect(() => {
-    axios
-      .get(
-        `https://www.alphavantage.co/query?function=EARNINGS&symbol=${userInputStorage}&apikey=QHHEJX1I72MCYTJR`
-      )
-      .then((response) => {
-        setearnings(response["data"]["quarterlyEarnings"]);
-      });
-  }, [userInputStorage]);
-
-  // Data fetching for stock chart and table
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "https://twelve-data1.p.rapidapi.com/time_series",
-      params: {
-        symbol: `${userInputStorage}`,
-        interval: "1day",
-        outputsize: "90",
-        format: "json",
-      },
-      headers: {
-        "x-rapidapi-key": "52979a8a04msha30f088adf5a675p1868e1jsnc49e105d3bfc",
-        "x-rapidapi-host": "twelve-data1.p.rapidapi.com",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        settableData(response.data["values"].reverse());
-        setstockDateData(
-          response.data["values"].map((stock) => stock["datetime"])
-        );
-        setstockCloseData(
-          response.data["values"].map((stock) => stock["close"])
-        );
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  }, [userInputStorage]);
-
-  // Data fetching for stock chart and table Mobile
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "https://twelve-data1.p.rapidapi.com/time_series",
-      params: {
-        symbol: `${userInputStorage}`,
-        interval: "1day",
-        outputsize: "30",
-        format: "json",
-      },
-      headers: {
-        "x-rapidapi-key": "52979a8a04msha30f088adf5a675p1868e1jsnc49e105d3bfc",
-        "x-rapidapi-host": "twelve-data1.p.rapidapi.com",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        settableData(response.data["values"]);
-        setstockDateDataM(
-          response.data["values"].reverse().map((stock) => stock["datetime"])
-        );
-        setstockCloseDataM(
-          response.data["values"].map((stock) => stock["close"])
-        );
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  }, [userInputStorage]);
 
   // Data fetching for main page index bar
   useEffect(() => {
@@ -168,7 +47,7 @@ function App() {
         {/* Navbar */}
         <div className="header">
           <Link to="/" className="title">
-            TradeAndLog
+            B4UTrade
           </Link>
           <IndexBar datas={mostGainerData} />
         </div>
@@ -205,22 +84,7 @@ function App() {
 
           {/* Route - Stock details page */}
           <Route exact path="/stockdetail">
-            {/* <motion.div
-              animate={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-              exit={{ opacity: 0 }}
-            > */}
-            <StockDetail
-              stockDate={stockDateData}
-              stockClose={stockCloseData}
-              stockDateM={stockDateDataM}
-              stockCloseM={stockCloseDataM}
-              tableData={tableData}
-              profileData={profileData}
-              earnings={earnings}
-              news={news}
-            />
-            {/* </motion.div> */}
+            <StockDetail userInput={stockSymbol} />
           </Route>
         </Switch>
 
@@ -229,27 +93,5 @@ function App() {
     </Router>
   );
 }
-
-// function Homepage() {
-//   return (
-//     <div className="mainContent">
-//       <div className="leftContent">
-//         <h1 className="headline">Beat the market.</h1>
-//         <h2 className="subheadline">
-//           Get the lastest historical & fundamental data of a stock.
-//         </h2>
-//         <div className="searchContainer">
-//           <FontAwesomeIcon icon={faSearch} className={"searchIcon"} />
-//           <SearchBar
-//             userInput={userInput}
-//             inputHandle={inputHandler}
-//             keypressHandle={keypressHandler}
-//           />
-//         </div>
-//         <SearchBarButton className="invisibleButton" />
-//       </div>
-//     </div>
-//   );
-// }
 
 export default App;

@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const StockProfile = ({ profileData }) => {
+const StockProfile = ({ userInput }) => {
+  const [profileData, setprofileData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.polygon.io/v1/meta/symbols/${userInput}/company?apiKey=REGDCE9oeokuBTeCkEQpYRH81FU_a7if`
+      )
+      .then((response) => {
+        setprofileData(response["data"]);
+      });
+  });
+
   return (
     <div className="stockProfile">
       <div className="companyInfo">

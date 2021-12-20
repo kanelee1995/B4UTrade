@@ -1,12 +1,17 @@
 import { Line } from "react-chartjs-2";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const StockChart = ({stockDateM, stockCloseM}) => {
+const StockChart = ({userInput}) => {
+  const [stockDateDataM, setstockDateDataM] = useState([]);
+  const [stockCloseDataM, setstockCloseDataM] = useState([]);
+
   const data = {
-    labels: stockDateM,
+    labels: stockDateDataM,
     datasets: [
       {
         label: "Daily Close",
-        data: stockCloseM,
+        data: stockCloseDataM,
         fill: true,
         backgroundColor: "rgb(6, 214, 160, 0.3)",
         borderColor: "#06d6a0",

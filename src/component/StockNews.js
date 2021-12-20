@@ -1,8 +1,11 @@
 import MaterialTable from "material-table";
 import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
+const StockNews = ({ userInput }) => {
+  const [news, setnews] = useState([]);
 
-const StockNews = ({ news }) => {
   const columns = [
     {
       title: "Date",
@@ -11,7 +14,7 @@ const StockNews = ({ news }) => {
     {
       title: "Tickers",
       field: "tickers",
-      render: (rowData) => rowData.tickers.slice(0,3).join(),
+      render: (rowData) => rowData.tickers.slice(0, 3).join(),
     },
     {
       title: "Title",
@@ -20,13 +23,23 @@ const StockNews = ({ news }) => {
     },
   ];
 
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.polygon.io/v2/reference/news?ticker=${userInput}&limit=10&apiKey=REGDCE9oeokuBTeCkEQpYRH81FU_a7if`
+      )
+      .then((response) => {
+        setnews(response["data"]["results"]);
+      });
+  }, [userInput]);
+
   return (
     <motion.div
-    animate={{ opacity: 1 }}
-    initial={{ opacity: 0 }}
-    exit={{ opacity: 0 }}
-    className="stockTable"
-  >  
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      className="stockTable"
+    >
       <MaterialTable
         columns={columns}
         data={news}

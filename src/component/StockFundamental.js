@@ -1,8 +1,11 @@
 import MaterialTable from "material-table";
 import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
+const StockFundamental = ({ userInput }) => {
+  const [earnings, setearnings] = useState([]);
 
-const StockFundamental = ({ earnings }) => {
   const columns = [
     {
       title: "Quarter",
@@ -20,7 +23,6 @@ const StockFundamental = ({ earnings }) => {
       title: "Estimated",
       field: "estimatedEPS",
       render: (rowData) => Math.round(rowData.estimatedEPS * 100) / 100,
-
     },
     {
       title: "Reported",
@@ -28,13 +30,25 @@ const StockFundamental = ({ earnings }) => {
     },
   ];
 
+  useEffect(() => {
+    axios
+      .get(
+        `https://www.alphavantage.co/query?function=EARNINGS&symbol=${userInput}&apikey=QHHEJX1I72MCYTJR`
+      )
+      .then((response) => {
+        setearnings(response["data"]["quarterlyEarnings"]);
+      });
+  }, [userInput]);
+
   return (
     <motion.div
-    animate={{ opacity: 1 }}
-    initial={{ opacity: 0 }}
-    exit={{ opacity: 0 }}
-    className="stockTable"
-  >      <MaterialTable
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      className="stockTable"
+    >
+      {" "}
+      <MaterialTable
         columns={columns}
         data={earnings}
         title="Earnings"
