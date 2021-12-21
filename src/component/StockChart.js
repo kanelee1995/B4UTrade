@@ -2,7 +2,6 @@ import { Line } from "react-chartjs-2";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-
 const StockChart = ({ userInput }) => {
   const [stockDateData, setstockDateData] = useState([]);
   const [stockCloseData, setstockCloseData] = useState([]);
@@ -54,7 +53,7 @@ const StockChart = ({ userInput }) => {
       .request(options)
       .then(function (response) {
         setstockDateData(
-          response.data["values"].map((stock) => stock["datetime"])
+          response.data["values"].reverse().map((stock) => stock["datetime"])
         );
         setstockCloseData(
           response.data["values"].map((stock) => stock["close"])
