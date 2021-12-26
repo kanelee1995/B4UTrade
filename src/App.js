@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import StockDetail from "./StockDetail";
 import MainContent from "./MainContent";
 import Header from "./Header";
@@ -7,20 +8,19 @@ import Header from "./Header";
 function App() {
   // User input control & keydown
   const [userInput, setuserInput] = useState("");
-  const [stockSymbol, setstockSymbol] = useState("AAPL");
-  const inputStorage = localStorage.getItem("userInput");
+  // const [stockSymbol, setstockSymbol] = useState("AAPL");
+  const inputStorage = localStorage.getItem("userInputStorage");
 
   const inputHandler = (e) => {
     setuserInput(e.target.value);
-    localStorage.setItem("userInput", e.target.value);
   };
 
-  const keypressHandler = (e) => {
-    if (e.key === "Enter") {
-      setstockSymbol(inputStorage);
-      document.getElementById("searchButton").click();
-    }
-  };
+  // const keypressHandler = (e) => {
+  //   if (e.key === "Enter") {
+  //     // setstockSymbol(inputStorage);
+  //     document.getElementById("searchButton").click();
+  //   }
+  // };
 
   return (
     <Router>
@@ -31,9 +31,9 @@ function App() {
           {/* Route - Home */}
           <Route exact path="/">
             <MainContent
-              userInput={inputStorage}
+              userInput={userInput}
               inputHandler={inputHandler}
-              keypressHandler={keypressHandler}
+              // handleSumbit={handleSumbit}
             />
           </Route>
           {/* Route - Stock details page */}

@@ -12,7 +12,7 @@ const StockProfile = ({ userInput }) => {
       .then((response) => {
         setprofileData(response["data"]);
       });
-  });
+  }, [userInput]);
 
   return (
     <div className="stockProfile">

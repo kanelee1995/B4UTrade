@@ -2,18 +2,18 @@ import { motion } from "framer-motion";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SearchBar from "./component/SearchBar";
-import SearchBarButton from "./component/SearchBarButton";
+// import { Link } from "react-router-dom";
 
-const mainContent = ({ userInput, inputHandler, keypressHandler }) => {
+// import SearchBarButton from "./component/SearchBarButton";
+
+const mainContent = ({ userInput, inputHandler }) => {
   return (
-
     <motion.div
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       className="mainContent"
     >
-
       <div className="leftContent">
         <h1 className="headline">Beat the market.</h1>
         <h2 className="subheadline">
@@ -24,12 +24,11 @@ const mainContent = ({ userInput, inputHandler, keypressHandler }) => {
           <SearchBar
             userInput={userInput}
             inputHandle={inputHandler}
-            keypressHandle={keypressHandler}
+            // handleSumbit={handleSumbit}
           />
         </div>
-        <SearchBarButton className="invisibleButton" />
+        {/* <SearchBarButton className="invisibleButton" /> */}
       </div>
-      
     </motion.div>
   );
 };
