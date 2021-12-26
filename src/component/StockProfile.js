@@ -7,12 +7,13 @@ const StockProfile = ({ userInput }) => {
   useEffect(() => {
     axios
       .get(
-        `https://api.polygon.io/v1/meta/symbols/${userInput}/company?apiKey=REGDCE9oeokuBTeCkEQpYRH81FU_a7if`
+        `https://financialmodelingprep.com/api/v3/profile/${userInput}?apikey=d7f8484c1c8ac4235b39e22345b8dbbd`
       )
       .then((response) => {
         setprofileData(response["data"]);
+        // console.log(response["data"])
       });
-  }, [userInput]);
+  });
 
   return (
     <div className="stockProfile">
@@ -20,7 +21,7 @@ const StockProfile = ({ userInput }) => {
         <div className="profileCompanyName">{profileData.symbol}</div>
         <p>{profileData.description}</p>
         <p>Sector: {profileData.sector}</p>
-        <a href={profileData.url}>Company Website </a>
+        <a href={profileData.website}>Company Website </a>
       </div>
       {/* <div className="companyLogo">
         <img src={profileData.logo} alt="CompanyLogo" />
