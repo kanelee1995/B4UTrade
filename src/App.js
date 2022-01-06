@@ -12,7 +12,7 @@ function App() {
   const inputHandler = (e) => {
     setuserInput(e.target.value);
   };
-  
+
   const handleSubmit = () => {
     localStorage.setItem("userInput", userInput.toUpperCase());
     document.getElementById("searchButton").click();

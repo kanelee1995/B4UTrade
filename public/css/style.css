@@ -11,11 +11,10 @@
   overflow: hidden;
   min-height: 100vh;
   max-width: 100vw;
-  background-image: url("./image/background.png");
+  background-image: url("./image/background-plain.png");
   background-size: cover;
-  background-position: right;
   background-repeat: no-repeat;
-  grid-template-columns: 10vh auto 10vh;
+  grid-template-columns: 10vw auto 10vw;
   grid-template-rows: 10vh 30vh auto;
   grid-template-areas:
     ". header ."
@@ -36,7 +35,6 @@ p {
   grid-area: header;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
   align-items: center;
 }
 
@@ -91,6 +89,8 @@ li {
   width: auto;
   /* height: 90vh; */
   grid-area: mainContent;
+  display: flex;
+  position: relative;
 }
 
 .leftContent {
@@ -99,6 +99,18 @@ li {
   flex-direction: column;
   justify-content: center;
   height: 100%;
+}
+
+.rightContent {
+  /* position: absolute; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#Layer_1 {
+  /* display: block; */
+  /* margin: auto; */
 }
 
 /* Headline */
@@ -173,10 +185,6 @@ li {
 
 /* Stock Detail page */
 .detailPage {
-  background-image: url("./image/background-plain.png");
-  background-size: cover;
-  background-position: right;
-  background-repeat: no-repeat;
   grid-area: mainContent;
 }
 
@@ -339,15 +347,7 @@ canvas {
     height: 100%;
   }
 
-  .title {
-    margin: auto;
-  }
-
   .companyName {
-    display: none;
-  }
-
-  .indexBar {
     display: none;
   }
 
@@ -362,6 +362,28 @@ canvas {
 
   /* mobile main page */
 
+  .app {
+    background-image: url("./image/background-plain.png");
+    background-position: center;
+  }
+
+  .headline {
+    font-size: 3rem;
+    margin-bottom: 2vh;
+  }
+
+  /* .mainContent {
+    position: absolute;
+    top: 10;
+  } */
+}
+
+@media only screen and (max-width: 900px) {
+  .indexBar {
+    display: none;
+  }
+}
+/* 
   .mainContent {
     background-image: url(./image/mBG.png);
     background-position: center;
@@ -370,10 +392,7 @@ canvas {
     padding: 0 50px 0 80px;
   }
 
-  .leftContent {
-    align-self: flex-end;
-    padding: 0 0 160px 0;
-  }
+ 
 
   .searchBar {
     height: 20px;
@@ -384,10 +403,7 @@ canvas {
     color: var(--fontLight);
   }
 
-  .headline {
-    font-size: 3rem;
-    margin-bottom: 2vh;
-  }
+  
 
   .subheadline {
     font-size: 1rem;
@@ -426,7 +442,6 @@ canvas {
     display: none;
   }
 
-  /* Detail page */
   canvas {
     height: 300px;
   }
@@ -447,4 +462,4 @@ canvas {
     max-width: 80vw;
     padding: 0;
   }
-}
+} */
