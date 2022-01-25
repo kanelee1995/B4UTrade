@@ -25,20 +25,19 @@ const StockDetail = ({ userInput }) => {
         exit={{ opacity: 0 }}
         className="detailPage"
       >
-        {/* <div className="detailPage"> */}
-        <div className="stockDetail">
+        {/* <div className="stockDetail"> */}
           <StockProfile userInput={userInput} />
           <StockChart userInput={userInput} />
           <StockChartMobile userInput={userInput} />
           <div className="Switcher">
             <Link to={`${url}`} className="SwitcherTab">
-              Daily Data
+              Daily
             </Link>
             <Link to={`${url}/earnings`} className="SwitcherTab">
               Earnings
             </Link>
             <Link to={`${url}/news`} className="SwitcherTab">
-              Company News
+              News
             </Link>
           </div>
           <Switch>
@@ -52,7 +51,6 @@ const StockDetail = ({ userInput }) => {
               <StockNews userInput={userInput} />
             </Route>
           </Switch>
-        </div>
         {/* </div> */}
       </motion.div>
     </Router>

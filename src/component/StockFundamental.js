@@ -10,6 +10,7 @@ const StockFundamental = ({ userInput }) => {
     {
       title: "Quarter",
       field: "fiscalDateEnding",
+      render: (rowData) => rowData.fiscalDateEnding.slice(0,7)
     },
     {
       title: "Surprise %",
@@ -55,7 +56,11 @@ const StockFundamental = ({ userInput }) => {
         options={{
           search: false,
           headerStyle: { backgroundColor: "#00000000", color: "#e9ecef" },
-          // rowStyle: { backgroundColor: "#343a40", color: "#e9ecef" },
+        }}
+        localization={{
+          body: {
+            emptyDataSourceMessage: "Loading data...",
+          },
         }}
       />
     </motion.div>

@@ -7,7 +7,7 @@ const StockChart = ({ userInput }) => {
   const [stockCloseData, setstockCloseData] = useState([]);
 
   const data = {
-    labels: stockDateData,
+    labels: stockDateData.map((data) => data.slice(5)),
     datasets: [
       {
         label: "Daily Close",
@@ -21,6 +21,10 @@ const StockChart = ({ userInput }) => {
   };
 
   const options = {
+    responsive: true,
+    layout: {
+      padding: 15
+    },
     scales: {
       yAxes: [
         {

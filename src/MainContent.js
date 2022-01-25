@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faSearch } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SearchBar from "./component/SearchBar";
 import SearchBarButton from "./component/SearchBarButton";
-import { ReactComponent as MainPic } from "./component/MainPic.svg";
+// import { ReactComponent as MainPic } from "./component/MainPic.svg";
+import MainPic from "./component/MainPic2.png";
 
 const mainContent = ({ userInput, inputHandler, handleSubmit }) => {
   return (
@@ -19,7 +20,7 @@ const mainContent = ({ userInput, inputHandler, handleSubmit }) => {
           Get the lastest historical & fundamental data of a stock.
         </h2>
         <div className="searchContainer">
-          <FontAwesomeIcon icon={faSearch} className={"searchIcon"} />
+          {/* <FontAwesomeIcon icon={faSearch} className={"searchIcon"} /> */}
           <SearchBar
             userInput={userInput}
             inputHandle={inputHandler}
@@ -28,14 +29,14 @@ const mainContent = ({ userInput, inputHandler, handleSubmit }) => {
         </div>
         <SearchBarButton className="invisibleButton" />
       </div>
-      <div className="rightContent">
-        <MainPic className="MainPic" />
-        {/* <img
-          src={MainPic}
-          style={{ height: 60, width: 70 }}
-          alt="MainPicture"
-        /> */}
-      </div>
+      <motion.div
+        className="rightContent"
+        animate={{ y: 20 }}
+        transition={{ duration: 0.5 }}
+      >
+        {/* <MainPic className="MainPic" /> */}
+        <img src={MainPic} alt="" className="MainPic" />
+      </motion.div>
     </motion.div>
   );
 };

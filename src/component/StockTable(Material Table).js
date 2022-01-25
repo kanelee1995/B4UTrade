@@ -14,10 +14,32 @@ const StockTable = ({ userInput }) => {
     return Math.round(num * 100) / 100;
   };
 
+  // const d = new Date();
+  // const monthName = [
+  //   "Jan",
+  //   "Feb",
+  //   "Mar",
+  //   "Apr",
+  //   "May",
+  //   "Jun",
+  //   "Jul",
+  //   "Aug",
+  //   "Sep",
+  //   "Oct",
+  //   "Nov",
+  //   "Dec",
+  // ];
+  // let day = d.getDate();
+  // let month = monthName[d.getMonth()];
+
   const columns = [
-    { title: "Date", field: "datetime" },
     {
-      title: "Change %",
+      title: "Date",
+      field: "datetime",
+      render: (rowData) => rowData.datetime.slice(5),
+    },
+    {
+      title: "Chg %",
       render: (rowData) =>
         changeResultToPercent(changeCalculator(rowData.open, rowData.close)) +
         "%",
@@ -50,7 +72,7 @@ const StockTable = ({ userInput }) => {
       render: (rowData) => Math.round(rowData.low * 100) / 100,
     },
     {
-      title: "Volume",
+      title: "Vol",
       field: "volume",
     },
   ];
@@ -75,6 +97,7 @@ const StockTable = ({ userInput }) => {
       .request(options)
       .then(function (response) {
         settableData(response.data["values"]);
+        // console.log(response.data["values"]);
       })
       .catch(function (error) {
         console.error(error);
@@ -96,6 +119,11 @@ const StockTable = ({ userInput }) => {
           search: false,
           headerStyle: { backgroundColor: "#00000000", color: "#e9ecef" },
           // rowStyle: { backgroundColor: "#00000015", color: "#e9ecef" },
+        }}
+        localization={{
+          body: {
+            emptyDataSourceMessage: "Loading data...",
+          },
         }}
       />
     </motion.div>

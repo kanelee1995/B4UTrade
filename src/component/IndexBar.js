@@ -16,7 +16,7 @@ const IndexBar = ({ datas }) => {
                 <FontAwesomeIcon icon={faAngleUp} />
               </span>
             </span>
-            <p className="companyName">{data["companyName"]}</p>
+            <p className="indexCompanyName">{data["companyName"]}</p>
           </div>
         ))}
       </div>

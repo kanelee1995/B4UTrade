@@ -1,4 +1,4 @@
-import MaterialTable from "material-table";
+import MaterialTable, { MTableCell } from "material-table";
 import { motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -10,16 +10,25 @@ const StockNews = ({ userInput }) => {
     {
       title: "Date",
       field: "published_utc",
-    },
-    {
-      title: "Tickers",
-      field: "tickers",
-      render: (rowData) => rowData.tickers.slice(0, 3).join(),
+      render: (rowData) => rowData.published_utc.slice(5, 10),
+      width: "10%",
     },
     {
       title: "Title",
       field: "title",
-      render: (rowData) => <a href={rowData.article_url}>{rowData.title}</a>,
+      width: "90%",
+      render: (rowData) => (
+        <a href={rowData.article_url} className="newsUrl">
+          {rowData.title}
+        </a>
+      ),
+    },
+    {
+      title: "Tickers",
+      field: "tickers",
+      render: (rowData) => (
+        <div className="newsTicker">{rowData.tickers.slice(0, 3).join()}</div>
+      ),
     },
   ];
 
@@ -47,7 +56,14 @@ const StockNews = ({ userInput }) => {
         options={{
           search: false,
           headerStyle: { backgroundColor: "#00000000", color: "#e9ecef" },
-          // rowStyle: { backgroundColor: "#343a40", color: "#e9ecef" },
+          rowStyle: {
+            overflowWrap: "break-word",
+          },
+        }}
+        localization={{
+          body: {
+            emptyDataSourceMessage: "Loading data...",
+          },
         }}
       />
     </motion.div>

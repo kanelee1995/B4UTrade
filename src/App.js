@@ -6,7 +6,7 @@ import Header from "./Header";
 
 function App() {
   // User input control & keydown
-  const [userInput, setuserInput] = useState("");
+  const [userInput, setuserInput] = useState("GME");
   const inputStorage = localStorage.getItem("userInput");
 
   const inputHandler = (e) => {
