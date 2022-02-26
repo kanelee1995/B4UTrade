@@ -10,7 +10,7 @@ const mainContent = ({ userInput, inputHandler, handleSubmit }) => {
   return (
     <motion.div
       animate={{ opacity: 1 }}
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="mainContent"
     >
