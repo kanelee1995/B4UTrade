@@ -4,17 +4,15 @@
   --componentDark: #343a40;
   --fontLight: #e9ecef;
   --green: rgb(6, 214, 160);
+  overflow: hidden;
 }
+
 
 .app {
   display: grid;
   overflow: auto;
   height: 100vh;
   width: 100vw;
-  /* background-image: url("./image/background-plain.png");
-  background-position: left;
-  background-size: cover;
-  background-repeat: no-repeat; */
   background-color: var(--backgroundDark);
   grid-template-columns: 10vw minmax(0, 1fr) 10vw;
   grid-template-rows: 10vh 30vh auto;
@@ -476,7 +474,7 @@ canvas {
     grid-template-areas:
       ". header ."
       ". mainContent .";
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .detailPage {

@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import StockDetail from "./StockDetail";
 import MainContent from "./MainContent";
 import Header from "./Header";
+import './css/normalize.css';
+import './css/style.css';
 
 function App() {
   // User input control & keydown
@@ -31,7 +33,7 @@ function App() {
               userInput={userInput}
               inputHandler={inputHandler}
               handleSubmit={handleSubmit}
-              // keypressHandler={keypressHandler}
+            // keypressHandler={keypressHandler}
             />
           </Route>
           {/* Route - Stock details page */}
