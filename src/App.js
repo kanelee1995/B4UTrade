@@ -33,7 +33,6 @@ function App() {
               userInput={userInput}
               inputHandler={inputHandler}
               handleSubmit={handleSubmit}
-            // keypressHandler={keypressHandler}
             />
           </Route>
           {/* Route - Stock details page */}

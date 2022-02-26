@@ -1,16 +1,13 @@
 import { motion } from "framer-motion";
-// import { faSearch } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SearchBar from "./component/SearchBar";
 import SearchBarButton from "./component/SearchBarButton";
-// import { ReactComponent as MainPic } from "./component/MainPic.svg";
 import MainPic from "./component/MainPic2.png";
 
 const mainContent = ({ userInput, inputHandler, handleSubmit }) => {
   return (
     <motion.div
       animate={{ opacity: 1 }}
-      initial={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       className="mainContent"
     >
