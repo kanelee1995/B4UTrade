@@ -28,7 +28,7 @@ function App() {
 
         <Switch>
           {/* Route - Home */}
-          <Route exact path="/">
+          <Route exact path="/B4UTrade">
             <MainContent
               userInput={userInput}
               inputHandler={inputHandler}
