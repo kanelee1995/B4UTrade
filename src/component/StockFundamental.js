@@ -48,7 +48,6 @@ const StockFundamental = ({ userInput }) => {
       exit={{ opacity: 0 }}
       className="stockTable"
     >
-      {" "}
       <MaterialTable
         columns={columns}
         data={earnings}
