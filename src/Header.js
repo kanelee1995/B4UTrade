@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <div className="header">
-      <Link to="/B4Utrade" className="title">
+      <Link to="/" className="title">
         B4UTrade
       </Link>
       <IndexBar datas={mostGainerData} />

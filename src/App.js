@@ -28,7 +28,7 @@ function App() {
 
         <Switch>
           {/* Route - Home */}
-          <Route exact path="/B4Utrade">
+          <Route exact path="/">
             <MainContent
               userInput={userInput}
               inputHandler={inputHandler}
@@ -36,7 +36,7 @@ function App() {
             />
           </Route>
           {/* Route - Stock details page */}
-          <Route exact path="/B4Utrade/stockdetail">
+          <Route exact path="/stockdetail">
             <StockDetail userInput={inputStorage} />
           </Route>
         </Switch>
