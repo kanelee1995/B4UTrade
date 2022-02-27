@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import StockDetail from "./StockDetail";
 import MainContent from "./MainContent";
 import Header from "./Header";
@@ -8,7 +8,7 @@ import './css/style.css';
 
 function App() {
   // User input control & keydown
-  const [userInput, setuserInput] = useState("GME");
+  const [userInput, setuserInput] = useState("");
   const inputStorage = localStorage.getItem("userInput");
 
   const inputHandler = (e) => {
