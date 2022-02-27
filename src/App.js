@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import StockDetail from "./StockDetail";
 import MainContent from "./MainContent";
 import Header from "./Header";
@@ -7,10 +7,8 @@ import './css/normalize.css';
 import './css/style.css';
 
 function App() {
-  // User input control & keydown
   const [userInput, setuserInput] = useState("");
   const inputStorage = localStorage.getItem("userInput");
-
   const inputHandler = (e) => {
     setuserInput(e.target.value);
   };
@@ -22,7 +20,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <HashRouter>
       <div className="app">
         <Header />
 
@@ -41,7 +39,7 @@ function App() {
           </Route>
         </Switch>
       </div>
-    </Router>
+    </HashRouter>
   );
 }
 
