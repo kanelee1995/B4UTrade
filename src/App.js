@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import StockDetail from "./StockDetail";
 import MainContent from "./MainContent";
 import Header from "./Header";
@@ -20,7 +20,7 @@ function App() {
   };
 
   return (
-    <HashRouter>
+    <Router>
       <div className="app">
         <Header />
 
@@ -39,7 +39,7 @@ function App() {
           </Route>
         </Switch>
       </div>
-    </HashRouter>
+    </Router>
   );
 }
 
