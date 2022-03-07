@@ -5,7 +5,6 @@ import StockNews from "./component/StockNews";
 import StockProfile from "./component/StockProfile";
 import StockTable from "./component/StockTable(Material Table)";
 import { motion } from "framer-motion";
-
 import {
   BrowserRouter as Router,
   Route,
