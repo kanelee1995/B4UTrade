@@ -6,7 +6,6 @@
   --green: rgb(6, 214, 160);
 }
 
-
 .app {
   display: grid;
   overflow: auto;
@@ -14,11 +13,12 @@
   width: 100vw;
   background-color: var(--backgroundDark);
   grid-template-columns: 10vw minmax(0, 1fr) 10vw;
-  grid-template-rows: 10vh 30vh auto;
+  grid-template-rows: 10vh 30vh auto 3vh;
   grid-template-areas:
     ". header ."
     ". mainContent ."
-    ". mainContent .";
+    ". mainContent ."
+    ". . . ";
   z-index: -2;
 }
 
@@ -142,10 +142,13 @@ li {
 /* Search Bar */
 
 .searchContainer {
-  padding: 15px 0px 5px 0px;
+  position: relative;
+  width: 230px;
+  margin-top: 0;
 }
 
 .searchBar {
+  margin: 15px 0px 5px 0px;
   height: 30px;
   width: 200px;
   border-radius: 30px;
@@ -155,9 +158,9 @@ li {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   outline: none;
-  padding-left: 20px;
+  padding-left: 35px;
   font-family: "Epilogue", sans-serif;
-  font-size: x-large;
+  font-size: 1rem;
   color: var(--fontLight);
 }
 
@@ -175,9 +178,9 @@ li {
 .searchIcon {
   color: rgb(255, 255, 255, 0.61);
   position: absolute;
-  left: 25vw;
-  bottom: 36vh;
-  display: none;
+  top: 25px;
+  left: 15px;
+  /* display: none; */
 }
 
 .searchButton {
@@ -212,7 +215,7 @@ li {
 /* Profile */
 .stockProfile {
   display: flex;
-  padding: 15px 0px 30px 0px;
+  padding: 10px 0px 30px 0px;
   max-width: 100%;
   grid-area: profile;
   overflow: hidden;
@@ -461,9 +464,14 @@ canvas {
     width: auto;
   }
 
+  .searchContainer {
+    margin: 0 auto;
+  }
+
   .searchIcon {
-    left: 78vw;
-    bottom: 17vh;
+    top: 21px;
+    width: 24px;
+    height: 24px;
   }
 
   /* Details */
