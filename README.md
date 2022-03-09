@@ -7,6 +7,8 @@
  - Material-Table  
  - React-Chart  
  - React-Router
+ - Framer Motion
+ - Adobe AI
 
 ## Difficulties faced
 
