@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import StockDetail from "./StockDetail";
 import MainContent from "./MainContent";
 import Header from "./Header";
-import './css/normalize.css';
-import './css/style.css';
+import "./Assets/Styles/normalize.css";
+import "./Assets/Styles/style.css";
 
 function App() {
   const [userInput, setuserInput] = useState("AAPL");
@@ -34,7 +34,7 @@ function App() {
             />
           </Route>
           {/* Route - Stock details page */}
-          <Route exact path="/stockdetail">
+          <Route path="/stockdetail">
             <StockDetail userInput={inputStorage} />
           </Route>
         </Switch>

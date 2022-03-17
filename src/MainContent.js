@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import SearchBar from "./component/SearchBar";
-import SearchBarButton from "./component/SearchBarButton";
-import MainPic from "./component/MainPic2.png";
+import SearchBar from "./Component/SearchBar";
+import SearchBarButton from "./Component/SearchBarButton";
+import MainPic from "./Assets/Images/MainPic2.png";
 
 const mainContent = ({ userInput, inputHandler, handleSubmit }) => {
   return (

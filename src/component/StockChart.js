@@ -1,10 +1,12 @@
 import { Line } from "react-chartjs-2";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const StockChart = ({ userInput }) => {
   const [stockDateData, setstockDateData] = useState([]);
   const [stockCloseData, setstockCloseData] = useState([]);
+  const [error, setError] = useState(false);
 
   const data = {
     labels: stockDateData.map((data) => data.slice(5)),
@@ -23,7 +25,7 @@ const StockChart = ({ userInput }) => {
   const options = {
     responsive: true,
     layout: {
-      padding: 15
+      padding: 15,
     },
     scales: {
       yAxes: [
@@ -55,6 +57,11 @@ const StockChart = ({ userInput }) => {
 
     axios
       .request(options)
+      // .then((response) => {
+      //   if (!response.ok) {
+      //     throw Error("Wrong symbol, please try again.");
+      //   }
+      // })
       .then(function (response) {
         setstockDateData(
           response.data["values"].reverse().map((stock) => stock["datetime"])
@@ -64,13 +71,22 @@ const StockChart = ({ userInput }) => {
         );
       })
       .catch(function (error) {
-        console.error(error);
+        setError(true);
       });
   }, [userInput]);
 
   return (
     <div className="stockChart">
       <Line data={data} options={options} />
+      {error && (
+        <div className="errMsg">
+          {/* {error} */}
+          Invalid Symbol, please try again.
+          <Link to="/" className="redirectBtn">
+            Back to homepage
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

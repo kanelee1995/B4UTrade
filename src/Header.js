@@ -18,13 +18,7 @@ const Header = () => {
 
   return (
     <div className="header">
-      <Link
-        to={{
-          pathname: "/",
-          hash: "#"
-        }}
-        className="title"
-      >
+      <Link to="/" className="title">
         B4UTrade
       </Link>
       <IndexBar datas={mostGainerData} />

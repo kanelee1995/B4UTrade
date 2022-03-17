@@ -120,21 +120,21 @@ li {
   z-index: 0;
   height: 80vh;
   position: absolute;
-  margin-left: 15vw;
+  margin-left: 5vw;
 }
 
 /* Headline */
 
 .headline {
   color: var(--fontLight);
-  font-size: 4.5rem;
+  font-size: 4.5vw;
   font-family: "Raleway", sans-serif;
   margin: 0px;
 }
 
 .subheadline {
   color: var(--fontLight);
-  font-size: 1.5rem;
+  font-size: 1.5vw;
   font-family: var(--topicFont);
   font-weight: 500;
 }
@@ -309,7 +309,7 @@ a:hover,
   width: 60vw;
 } */
 
-.stockProfile .companyInfo a {
+.stockProfile .companyInfo a, .redirectBtn {
   color: #06d6a0;
 }
 
@@ -321,6 +321,7 @@ a:hover,
   height: 50vh;
   background-color: #0000006c;
   border-radius: 5px;
+  position: relative;
 }
 
 .stockChartMobile {
@@ -392,6 +393,16 @@ canvas {
 
 .SwitcherTab:focus {
   background: #1d1d1d6c;
+}
+
+.errMsg {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  line-height: 20px;
 }
 
 /* Responsive */
@@ -561,3 +572,4 @@ canvas {
     display: none;
   }
 }
+
