@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import IndexBar from "./component/IndexBar";
+import IndexBar from "../Component/IndexBar";
 
 const Header = () => {
   const [mostGainerData, setMostGainerData] = useState([]);

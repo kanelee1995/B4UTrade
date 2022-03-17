@@ -1,9 +1,9 @@
-import StockChart from "./component/StockChart";
-import StockChartMobile from "./component/StockChartMobile";
-import StockFundamental from "./component/StockFundamental";
-import StockNews from "./component/StockNews";
-import StockProfile from "./component/StockProfile";
-import StockTable from "./component/StockTable(Material Table)";
+import StockChart from "../Component/StockChart";
+import StockChartMobile from "../Component/StockChartMobile";
+import StockFundamental from "../Component/StockFundamental";
+import StockNews from "../Component/StockNews";
+import StockProfile from "../Component/StockProfile";
+import StockTable from "../Component/StockDaily";
 import { motion } from "framer-motion";
 import {
   HashRouter as Router,

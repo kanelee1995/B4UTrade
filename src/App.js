@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import StockDetail from "./StockDetail";
-import MainContent from "./MainContent";
-import Header from "./Header";
+import StockDetail from "./Route/StockDetail";
+import MainContent from "./Route/MainContent";
+import Header from "./Route/Header";
 import "./Assets/Styles/normalize.css";
 import "./Assets/Styles/style.css";
 
