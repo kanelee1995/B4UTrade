@@ -58,5 +58,7 @@
   },
   "devDependencies": {
     "gh-pages": "^3.2.3"
-  }
+  },
+  "keywords": [],
+  "description": ""
 }

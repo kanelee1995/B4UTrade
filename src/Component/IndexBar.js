@@ -5,7 +5,7 @@ const IndexBar = ({ datas }) => {
   const slicedDatas = datas.slice(0, 3);
 
   return (
-    <div className="indexBar">
+    <header className="indexBar">
       <div className="indexList">
         {slicedDatas.map((data) => (
           <div className="indexBarItem" key={data["ticker"]}>
@@ -20,7 +20,7 @@ const IndexBar = ({ datas }) => {
           </div>
         ))}
       </div>
-    </div>
+    </header>
   );
 };
 
