@@ -14,24 +14,6 @@ const StockTable = ({ userInput }) => {
     return Math.round(num * 100) / 100;
   };
 
-  // const d = new Date();
-  // const monthName = [
-  //   "Jan",
-  //   "Feb",
-  //   "Mar",
-  //   "Apr",
-  //   "May",
-  //   "Jun",
-  //   "Jul",
-  //   "Aug",
-  //   "Sep",
-  //   "Oct",
-  //   "Nov",
-  //   "Dec",
-  // ];
-  // let day = d.getDate();
-  // let month = monthName[d.getMonth()];
-
   const columns = [
     {
       title: "Date",
