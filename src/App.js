@@ -8,7 +8,7 @@ import "./Assets/Styles/style.css";
 
 function App() {
   const [userInput, setuserInput] = useState("");
-//   const inputStorage = localStorage.getItem("userInput");
+  const inputStorage = localStorage.getItem("userInput");
 
   const inputHandler = (e) => {
     setuserInput(e.target.value);
