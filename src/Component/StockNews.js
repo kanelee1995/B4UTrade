@@ -1,4 +1,5 @@
-import MaterialTable, { MTableCell } from "material-table";
+// import MaterialTable, { MTableCell } from "material-table";
+import MaterialTable from "material-table";
 import { motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
