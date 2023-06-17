@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import ReactLoading from 'react-loading';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -23,7 +24,7 @@ const IndexBar = () => {
   const slicedDatas = mostGainerData.slice(0, 3);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <ReactLoading type={"spinningBubbles"} color={"#ffffff"} height={'30px'} width={'30px'} />;
   }
 
   return (
@@ -43,6 +44,7 @@ const IndexBar = () => {
         ))}
       </div>
     </header>
+
   );
 };
 
