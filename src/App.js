@@ -6,6 +6,7 @@ import Header from "./Route/Header";
 import "./Assets/Styles/normalize.css";
 import "./Assets/Styles/style.css";
 import SearchBar from "./Component/SearchBar";
+import SearchBarButton from "./Component/SearchBarButton";
 
 function App() {
     const [userInput, setuserInput] = useState("");
@@ -34,6 +35,7 @@ function App() {
                                 userInput={userInput}
                                 inputHandle={inputHandler}
                                 handleSubmit={handleSubmit} />
+                            <SearchBarButton />
                         </MainContent>
 
                     </Route>
