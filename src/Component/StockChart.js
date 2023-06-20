@@ -2,11 +2,13 @@ import { Line } from "react-chartjs-2";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import API_KEYS from "../api";
 
 const StockChart = ({ userInput }) => {
   const [stockDateData, setstockDateData] = useState([]);
   const [stockCloseData, setstockCloseData] = useState([]);
   const [error, setError] = useState(false);
+  const key = API_KEYS.twelveData;
 
   const data = {
     labels: stockDateData.map((data) => data.slice(5)),
@@ -50,18 +52,13 @@ const StockChart = ({ userInput }) => {
         format: "json",
       },
       headers: {
-        "x-rapidapi-key": "52979a8a04msha30f088adf5a675p1868e1jsnc49e105d3bfc",
+        "x-rapidapi-key": `${key}`,
         "x-rapidapi-host": "twelve-data1.p.rapidapi.com",
       },
     };
 
     axios
       .request(options)
-      // .then((response) => {
-      //   if (!response.ok) {
-      //     throw Error("Wrong symbol, please try again.");
-      //   }
-      // })
       .then(function (response) {
         setstockDateData(
           response.data["values"].reverse().map((stock) => stock["datetime"])
@@ -74,7 +71,7 @@ const StockChart = ({ userInput }) => {
         setError(true);
       });
   }, [userInput]);
-
+  
   return (
     <div className="stockChart">
       <Line data={data} options={options} />

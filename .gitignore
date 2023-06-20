@@ -24,3 +24,9 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+
+# API Keys
+/src/api.js
+
+# Back up
+/src/Component/IndexBarBackUp.js

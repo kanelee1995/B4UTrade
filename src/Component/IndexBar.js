@@ -3,14 +3,17 @@ import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import ReactLoading from 'react-loading';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import API_KEYS from "../api";
+
 
 const IndexBar = () => {
   const [mostGainerData, setMostGainerData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const key = API_KEYS.financialmodelingprep;
 
   useEffect(() => {
     axios
-      .get("https://financialmodelingprep.com/api/v3/gainers?apikey=d7f8484c1c8ac4235b39e22345b8dbbd")
+      .get(`https://financialmodelingprep.com/api/v3/gainers?apikey=${key}`)
       .then((response) => {
         setMostGainerData(response.data);
         setLoading(false);
