@@ -3,6 +3,7 @@ import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+
 const IndexBar = () => {
     const [mostGainerData, setMostGainerData] = useState([]);
 
