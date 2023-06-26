@@ -35,9 +35,9 @@ const StockDetail = ({ userInput }) => {
                 {/* <div className="stockDetail"> */}
                 <StockProfile userInput={userInput} />
                 <StockChart userInput={userInput} />
-                <Suspense fallback={loading}>
+                {/* <Suspense fallback={loading}>
                     <StockChartMobile userInput={userInput} />
-                </Suspense>
+                </Suspense> */}
                 <div className="Switcher">
                     <Link to={`${url}`} className="SwitcherTab">
                         Daily

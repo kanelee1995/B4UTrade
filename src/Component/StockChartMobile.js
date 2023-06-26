@@ -32,11 +32,11 @@ const StockChart = ({ userInput }) => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-          labels: {
-              padding: 5
-          }
-      }
-  }
+        labels: {
+          padding: 5,
+        },
+      },
+    },
   };
 
   useEffect(() => {

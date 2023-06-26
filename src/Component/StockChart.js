@@ -8,6 +8,7 @@ const StockChart = ({ userInput }) => {
   const [stockDateData, setstockDateData] = useState([]);
   const [stockCloseData, setstockCloseData] = useState([]);
   const [error, setError] = useState(false);
+  const isMobileViewport = () => window.innerWidth <= 768;
   const key = API_KEYS.twelveData;
 
   const data = {
@@ -24,7 +25,7 @@ const StockChart = ({ userInput }) => {
     ],
   };
 
-  const options = {
+  const chartOptionsDesktop = {
     responsive: true,
     layout: {
       padding: 15,
@@ -41,8 +42,43 @@ const StockChart = ({ userInput }) => {
     maintainAspectRatio: false,
   };
 
+  const chartOptionsMobile = {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: {
+          padding: 5,
+        },
+      },
+    },
+  };
+
   useEffect(() => {
-    const options = {
+    const apiOptionsMobile = {
+      method: "GET",
+      url: "https://twelve-data1.p.rapidapi.com/time_series",
+      params: {
+        symbol: `${userInput}`,
+        interval: "1day",
+        outputsize: "7",
+        format: "json",
+      },
+      headers: {
+        "x-rapidapi-key": "52979a8a04msha30f088adf5a675p1868e1jsnc49e105d3bfc",
+        "x-rapidapi-host": "twelve-data1.p.rapidapi.com",
+      },
+    };
+
+    const apiOptionsDesktop = {
       method: "GET",
       url: "https://twelve-data1.p.rapidapi.com/time_series",
       params: {
@@ -57,8 +93,10 @@ const StockChart = ({ userInput }) => {
       },
     };
 
+    const apiOptions = isMobileViewport() ? apiOptionsMobile : apiOptionsDesktop;
+
     axios
-      .request(options)
+      .request(apiOptions)
       .then(function (response) {
         setstockDateData(
           response.data["values"].reverse().map((stock) => stock["datetime"])
@@ -74,7 +112,7 @@ const StockChart = ({ userInput }) => {
   
   return (
     <div className="stockChart">
-      <Line data={data} options={options} />
+      <Line data={data} options={chartOptionsDesktop} />
       {error && (
         <div className="errMsg">
           {/* {error} */}
