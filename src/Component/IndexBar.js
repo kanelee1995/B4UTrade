@@ -22,7 +22,7 @@ const IndexBar = () => {
         console.error("Error fetching gainer data:", error);
         setLoading(false);
       });
-  }, []);
+  });
 
   const slicedDatas = mostGainerData.slice(0, 3);
 
