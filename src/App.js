@@ -26,7 +26,7 @@ function App() {
         <Router>
             <div className="app">
                 <Header />
-
+                
                 <Switch>
                     {/* Route - Home */}
                     <Route exact path="/">
