@@ -1,10 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
-import ReactLoading from 'react-loading';
+import ReactLoading from "react-loading";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import API_KEYS from "../api";
-
 
 const IndexBar = () => {
   const [mostGainerData, setMostGainerData] = useState([]);
@@ -22,12 +22,22 @@ const IndexBar = () => {
         console.error("Error fetching gainer data:", error);
         setLoading(false);
       });
-  });
+  }, []);
 
   const slicedDatas = mostGainerData.slice(0, 3);
 
   if (loading) {
-    return <ReactLoading type={"spinningBubbles"} color={"#ffffff"} height={'30px'} width={'30px'} />;
+    return (
+      <div className="Loader">
+        <ReactLoading
+          type={"spinningBubbles"}
+          color={"#ffffff"}
+          height={"30px"}
+          width={"30px"}
+        />
+        ;
+      </div>
+    );
   }
 
   return (
@@ -47,7 +57,6 @@ const IndexBar = () => {
         ))}
       </div>
     </header>
-
   );
 };
 
