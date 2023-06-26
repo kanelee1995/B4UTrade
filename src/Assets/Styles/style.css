@@ -515,9 +515,9 @@ canvas {
     padding: 0;
   }
 
-  .stockChart {
+  /* .stockChart {
     display: none;
-  }
+  } */
 
   .stockChartMobile {
     display: block;
@@ -525,9 +525,9 @@ canvas {
     height: 40vh;
   }
 
-  .stockChartMobile canvas {
+  /* .stockChartMobile canvas {
     height: 100%;
-  }
+  } */
 
   .Switcher {
     padding: 5px;
