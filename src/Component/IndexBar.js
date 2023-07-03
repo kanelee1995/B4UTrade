@@ -28,7 +28,7 @@ const IndexBar = () => {
 
   if (loading) {
     return (
-      <div className="Loader">
+      <div className="Loader" aria-busy="true">
         <ReactLoading
           type={"spinningBubbles"}
           color={"#ffffff"}
@@ -46,13 +46,13 @@ const IndexBar = () => {
         {slicedDatas.map((data) => (
           <div className="indexBarItem" key={data.ticker}>
             {data.ticker}
-            <span className="whiteSpace">
+            <span className="whiteSpace" aria-hidden="true">
               {Math.round(data.changesPercentage * 100) / 100}%
               <span className="whiteSpace">
                 <FontAwesomeIcon icon={faAngleUp} />
               </span>
             </span>
-            <p className="indexCompanyName">{data.companyName}</p>
+            <span className="indexComspananyName">{data.companyName}</span>
           </div>
         ))}
       </div>
