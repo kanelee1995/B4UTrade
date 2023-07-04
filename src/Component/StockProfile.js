@@ -40,7 +40,14 @@ const StockProfile = ({ userInput }) => {
     };
 
     if (loading) {
-        return <ReactLoading type={"spinningBubbles"} color={"#ffffff"} height={'30px'} width={'30px'} />;
+        // <div className="Loader">
+        <ReactLoading
+          type={"spinningBubbles"}
+          color={"#ffffff"}
+          height={"30px"}
+          width={"30px"}
+        />
+      {/* </div> */}
     }
 
     return (

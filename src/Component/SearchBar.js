@@ -12,7 +12,7 @@ const SearchBar = ({ userInput, inputHandle, handleSubmit }) => {
         placeholder="Search by symbol"
         onChange={inputHandle}
       ></input>
-      <FontAwesomeIcon icon={faSearch} className={"searchIcon"} />
+      <FontAwesomeIcon icon={faSearch} className={"searchIcon"} aria-hidden="true"/>
     </form>
   );
 };
