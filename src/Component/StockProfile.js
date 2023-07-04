@@ -72,9 +72,6 @@ const StockProfile = ({ userInput }) => {
                 <p>Sector: {profileData.sector}</p>
                 <a href={profileData.website}>Company Website </a>
             </div>
-            {/* <div className="companyLogo">
-        <img src={profileData.logo} alt="CompanyLogo" />
-      </div> */}
         </div>
     );
 };
