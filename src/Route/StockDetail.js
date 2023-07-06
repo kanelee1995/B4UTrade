@@ -18,7 +18,7 @@ import {
 const StockFundamental = lazy(() => import('../Component/StockFundamental'));
 const StockNews = lazy(() => import('../Component/StockNews'));
 const StockTable = lazy(() => import('../Component/StockDaily'));
-const StockChartMobile = lazy(() => import('../Component/StockChartMobile'));
+// const StockChartMobile = lazy(() => import('../Component/StockChartMobile'));
 
 const StockDetail = ({ userInput }) => {
     let { path, url } = useRouteMatch();
