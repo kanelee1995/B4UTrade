@@ -64,6 +64,7 @@ const StockFundamental = ({ userInput }) => {
                         emptyDataSourceMessage: "Loading data...",
                     },
                 }}
+                aria-label="Stock Earnings Table"
             />
         </motion.div>
     );

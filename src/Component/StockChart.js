@@ -124,7 +124,7 @@ const StockChart = ({ userInput }) => {
     <div className="stockChart">
       <Line data={data} options={chartOptionsDesktop} />
       {error && (
-        <div className="errMsg">
+        <div className="errMsg" aria-live="polite">
           {/* {error} */}
           Invalid Symbol, please try again.
           <Link to="/" className="redirectBtn">

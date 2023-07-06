@@ -69,6 +69,7 @@ const StockNews = ({ userInput }) => {
                         emptyDataSourceMessage: "Loading data...",
                     },
                 }}
+                aria-label="Stock News Table"
             />
         </motion.div>
     );
