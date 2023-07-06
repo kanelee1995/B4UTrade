@@ -16,11 +16,11 @@ function App() {
         setuserInput(e.target.value);
     };
 
-    const handleSubmit = () => {
-        localStorage.setItem("userInput", userInput.toUpperCase());
-        document.getElementById("searchButton").click();
-        window.location.reload();
-    };
+    // const handleSubmit = () => {
+    //     localStorage.setItem("userInput", userInput.toUpperCase());
+    //     document.getElementById("searchButton").click();
+    //     window.location.reload();
+    // };
 
     return (
         <Router>
@@ -34,7 +34,8 @@ function App() {
                             <SearchBar
                                 userInput={userInput}
                                 inputHandle={inputHandler}
-                                handleSubmit={handleSubmit} />
+                                // handleSubmit={handleSubmit}
+                                 />
                             <SearchBarButton />
                         </MainContent>
 
