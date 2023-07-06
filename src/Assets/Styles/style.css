@@ -562,3 +562,12 @@ canvas {
   }
 }
 
+.errorTooltip {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+  }
