@@ -31,3 +31,5 @@ yarn-error.log*
 # Back up
 StockChartBackup.js
 IndexBarBackUp.js
+StockChartMobile.js
+Appbackup.js
