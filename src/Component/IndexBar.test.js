@@ -19,3 +19,8 @@ describe("Index Bar", () => {
     await waitFor(() => expect(axios.get).toHaveBeenCalled());
   });
 });
+
+  // should fetch specific url
+  // should show loading when fetching
+  // should display error message when fetch failed
+  // should display corresponding company name and ticker
