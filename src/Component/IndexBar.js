@@ -28,7 +28,7 @@ const IndexBar = () => {
 
   if (loading) {
     return (
-      <div className="Loader" aria-busy="true" aria-live="polite">
+      <div className="Loader" aria-busy="true" aria-live="polite" data-testid="loader">
         <ReactLoading
           type={"spinningBubbles"}
           color={"#ffffff"}
