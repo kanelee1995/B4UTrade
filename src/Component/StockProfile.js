@@ -21,6 +21,7 @@ const StockProfile = ({ userInput }) => {
             .catch((error) => {
                 console.log(error);
             });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userInput]);
 
     const toggleText = () => {
@@ -40,7 +41,14 @@ const StockProfile = ({ userInput }) => {
     };
 
     if (loading) {
-        return <ReactLoading type={"spinningBubbles"} color={"#ffffff"} height={'30px'} width={'30px'} />;
+        // <div className="Loader">
+        <ReactLoading
+          type={"spinningBubbles"}
+          color={"#ffffff"}
+          height={"30px"}
+          width={"30px"}
+        />
+      {/* </div> */}
     }
 
     return (
@@ -65,9 +73,6 @@ const StockProfile = ({ userInput }) => {
                 <p>Sector: {profileData.sector}</p>
                 <a href={profileData.website}>Company Website </a>
             </div>
-            {/* <div className="companyLogo">
-        <img src={profileData.logo} alt="CompanyLogo" />
-      </div> */}
         </div>
     );
 };

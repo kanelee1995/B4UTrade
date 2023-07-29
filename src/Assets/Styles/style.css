@@ -1,7 +1,7 @@
 :root {
-  --backgroundDark: #212529;
+  --backgroundDark: #1F2327;
   --topicFont: "Quicksand", sans-serif;
-  --componentDark: #343a40;
+  --componentDark: #292E33;
   --fontLight: #e9ecef;
   --green: rgb(6, 214, 160);
 }
@@ -93,7 +93,7 @@ li {
 
 .indexCompanyName {
   font-size: 0.8rem;
-  color: grey !important;
+  color: #ced4da;
 }
 
 /* MainContent */
@@ -200,46 +200,30 @@ li {
 
 .detailPage {
   grid-area: mainContent;
-  background-color: rgba(2, 2, 2, 0.4);
-  display: grid;
-  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   /* min-height: 100%;   */
-  grid-template-columns: 5vw minmax(0, 1fr) 5vw;
+  /* grid-template-columns: 5vw minmax(0, 1fr) 5vw;
   grid-template-rows: auto auto 8vh auto;
   grid-template-areas:
     ". profile ."
     ". chart ."
     ". tabs ."
-    ". table .";
+    ". table ."; */
 }
 
 /* Profile */
 .stockProfile {
   display: flex;
-  padding: 10px 0px 30px 0px;
+  padding: 24px;
   max-width: 100%;
   grid-area: profile;
   overflow: hidden;
+  background-color: var(--componentDark);
+    border-radius: 5px;
+    position: relative;
 }
-
-/* .companyLogo {
-  display: flex;
-  width: 60px;
-  height: 60px;
-  padding: 20px;
-  background-color: var(--fontLight);
-  align-self: center;
-}
-
-.companyLogo img {
-  object-fit: contain;
-  width: auto;
-  height: auto;
-  min-width: 100%;
-  min-height: 100%;
-  justify-content: center;
-  align-items: center;
-} */
 
 .companyName {
   font-family: var(--topicFont);
@@ -248,7 +232,7 @@ li {
 }
 
 .companyInfo {
-  margin-left: 25px;
+  /* margin-left: 25px; */
   width: auto;
   max-width: 100%;
   height: 100%;
@@ -320,7 +304,7 @@ a:hover,
   max-width: 100%;
   grid-area: chart;
   height: 50vh;
-  background-color: #0000006c;
+  background-color: var(--componentDark);
   border-radius: 5px;
   position: relative;
 }
@@ -328,7 +312,7 @@ a:hover,
 .stockChartMobile {
   display: none;
   grid-area: chart;
-  background-color: #0000006c;
+  background-color: var(--componentDark);
   border-radius: 15px;
 }
 
@@ -346,9 +330,9 @@ canvas {
 }
 
 .MuiPaper-root {
-  background-color: #0000006c !important;
+  background-color: var(--componentDark) !important;
   color: var(--fontLight) !important;
-  padding: 10px 30px 10px 30px;
+  padding: 24px;
 }
 
 .MuiTablePagination-root {
@@ -361,6 +345,10 @@ canvas {
 }
 .MuiIconButton-root {
   color: var(--fontLight) !important;
+}
+
+.MTableToolbar-root-5 {
+    padding-left: 0;
 }
 
 .MuiPaper-rounded {
@@ -384,7 +372,7 @@ canvas {
   border: none;
   border-radius: 5px;
   margin: 0px 5px 0px 5px;
-  background: #0000006c;
+  background: var(--componentDark);
   transition: background 0.2s;
 }
 
@@ -515,9 +503,9 @@ canvas {
     padding: 0;
   }
 
-  .stockChart {
+  /* .stockChart {
     display: none;
-  }
+  } */
 
   .stockChartMobile {
     display: block;
@@ -525,9 +513,9 @@ canvas {
     height: 40vh;
   }
 
-  .stockChartMobile canvas {
+  /* .stockChartMobile canvas {
     height: 100%;
-  }
+  } */
 
   .Switcher {
     padding: 5px;
@@ -574,3 +562,12 @@ canvas {
   }
 }
 
+.errorTooltip {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+  }

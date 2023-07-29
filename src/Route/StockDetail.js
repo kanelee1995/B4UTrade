@@ -18,7 +18,7 @@ import {
 const StockFundamental = lazy(() => import('../Component/StockFundamental'));
 const StockNews = lazy(() => import('../Component/StockNews'));
 const StockTable = lazy(() => import('../Component/StockDaily'));
-const StockChartMobile = lazy(() => import('../Component/StockChartMobile'));
+// const StockChartMobile = lazy(() => import('../Component/StockChartMobile'));
 
 const StockDetail = ({ userInput }) => {
     let { path, url } = useRouteMatch();
@@ -35,9 +35,9 @@ const StockDetail = ({ userInput }) => {
                 {/* <div className="stockDetail"> */}
                 <StockProfile userInput={userInput} />
                 <StockChart userInput={userInput} />
-                <Suspense fallback={loading}>
+                {/* <Suspense fallback={loading}>
                     <StockChartMobile userInput={userInput} />
-                </Suspense>
+                </Suspense> */}
                 <div className="Switcher">
                     <Link to={`${url}`} className="SwitcherTab">
                         Daily
