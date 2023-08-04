@@ -9,18 +9,20 @@ import API_KEYS from "../api";
 const IndexBar = () => {
   const [mostGainerData, setMostGainerData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const key = API_KEYS.financialmodelingprep;
 
   useEffect(() => {
     axios
       .get(`https://financialmodelingprep.com/api/v3/gainers?apikey=${key}`)
       .then((response) => {
-        setMostGainerData(response.data);
         setLoading(false);
+        setMostGainerData(response.data);
       })
       .catch((error) => {
-        console.error("Error fetching gainer data:", error);
         setLoading(false);
+        setError(true)
+        console.log(error)
       });
   }, []);
 
@@ -39,6 +41,14 @@ const IndexBar = () => {
         ;
       </div>
     );
+  }
+
+  if (error) {
+    return (
+        <div>
+            <p>Error fetching data, please try again!</p>
+        </div>
+    )
   }
 
   return (
