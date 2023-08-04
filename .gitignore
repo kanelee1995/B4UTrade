@@ -29,7 +29,11 @@ yarn-error.log*
 /src/api.js
 
 # Back up
+<<<<<<< HEAD
+/src/Component/IndexBarBackUp.js
+=======
 StockChartBackup.js
 IndexBarBackUp.js
 StockChartMobile.js
 Appbackup.js
+>>>>>>> refs/remotes/origin/main
