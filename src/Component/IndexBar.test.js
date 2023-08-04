@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import { act } from 'react-dom/test-utils';
 import userEvent from "@testing-library/user-event";
 import IndexBar from "./IndexBar";
 import axios from "axios";
@@ -39,13 +40,14 @@ it("should show loading when fetching", () => {
 
 it("should display error message when fetch failed", async () => {
 //   axios.get.mockRejectedValue("error!");
-    axios.get.mockImplementation(() => new Promise((resolve, reject) => {
-        reject("error!")
-    }))
-  render(<IndexBar />);
+    act(() => {
+        axios.get.mockImplementation(() => new Promise((resolve, reject) => {
+            reject("error!")
+        }))
+    })
+    render(<IndexBar />);
 
-//   await expect(axios.get).rejects.toMatch("error!");
-expect(screen.getByRole("paragraph")).toMatch("Error fetching data, please try again!");
+    await waitFor(() => expect(screen.findByText("Error fetching data, please try again!")));
 
 });
     
