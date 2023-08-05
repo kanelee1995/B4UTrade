@@ -48,7 +48,8 @@ it("should display error message when fetch failed", async () => {
     })
     render(<IndexBar />);
 
-    await waitFor(() => expect(screen.findByText("Error fetching data, please try again!")));
+    // await waitFor(() => expect(screen.getByText("Error fetching data, please try again!")));
+     expect( await screen.findByText("Error fetching data, please try again!")).toBeInTheDocument();
 
 });
     
