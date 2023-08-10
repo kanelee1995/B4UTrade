@@ -2,13 +2,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "font-awesome/css/font-awesome.min.css";
 import { useState } from "react";
-import API_KEYS from "../api";
+// import API_KEYS from "../api";
 import axios from "axios";
 
 const SearchBar = ({ userInput, inputHandle }) => {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const key = API_KEYS.financialmodelingprep;
+//   const key = API_KEYS.financialmodelingprep;
 
 const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +20,8 @@ const handleSubmit = async (e) => {
     }
   
     try {
-      const response = await axios.get(`https://financialmodelingprep.com/api/v3/profile/${userInput}?apikey=${key}`);
+      const response = await axios.get('exmaple.com');
+    //   const response = await axios.get(`https://financialmodelingprep.com/api/v3/profile/${userInput}?apikey=${key}`);
       const data = response["data"][0].symbol;
   
       if (data === userInput) {
