@@ -50,26 +50,6 @@ const StockChart = ({ userInput }) => {
     maintainAspectRatio: false,
   };
 
-//   const chartOptionsMobile = {
-//     scales: {
-//       yAxes: [
-//         {
-//           ticks: {
-//             beginAtZero: true,
-//           },
-//         },
-//       ],
-//     },
-//     maintainAspectRatio: false,
-//     plugins: {
-//       legend: {
-//         labels: {
-//           padding: 5,
-//         },
-//       },
-//     },
-//   };
-
   useEffect(() => {
     const apiOptionsMobile = {
       method: "GET",
