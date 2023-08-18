@@ -1,0 +1,43 @@
+{
+  "files": {
+    "static/js/0.077dc7d7.chunk.js": "/b4utrade/static/js/0.077dc7d7.chunk.js",
+    "static/js/0.077dc7d7.chunk.js.map": "/b4utrade/static/js/0.077dc7d7.chunk.js.map",
+    "main.css": "/b4utrade/static/css/main.97111954.chunk.css",
+    "main.js": "/b4utrade/static/js/main.abcfe307.chunk.js",
+    "main.js.map": "/b4utrade/static/js/main.abcfe307.chunk.js.map",
+    "runtime-main.js": "/b4utrade/static/js/runtime-main.0b88593a.js",
+    "runtime-main.js.map": "/b4utrade/static/js/runtime-main.0b88593a.js.map",
+    "static/css/3.69acafaa.chunk.css": "/b4utrade/static/css/3.69acafaa.chunk.css",
+    "static/js/3.71235315.chunk.js": "/b4utrade/static/js/3.71235315.chunk.js",
+    "static/js/3.71235315.chunk.js.map": "/b4utrade/static/js/3.71235315.chunk.js.map",
+    "static/js/4.13de1130.chunk.js": "/b4utrade/static/js/4.13de1130.chunk.js",
+    "static/js/4.13de1130.chunk.js.map": "/b4utrade/static/js/4.13de1130.chunk.js.map",
+    "static/js/5.f6fb7057.chunk.js": "/b4utrade/static/js/5.f6fb7057.chunk.js",
+    "static/js/5.f6fb7057.chunk.js.map": "/b4utrade/static/js/5.f6fb7057.chunk.js.map",
+    "static/js/6.d650be6e.chunk.js": "/b4utrade/static/js/6.d650be6e.chunk.js",
+    "static/js/6.d650be6e.chunk.js.map": "/b4utrade/static/js/6.d650be6e.chunk.js.map",
+    "static/js/7.a2eed096.chunk.js": "/b4utrade/static/js/7.a2eed096.chunk.js",
+    "static/js/7.a2eed096.chunk.js.map": "/b4utrade/static/js/7.a2eed096.chunk.js.map",
+    "static/js/8.e210d3f1.chunk.js": "/b4utrade/static/js/8.e210d3f1.chunk.js",
+    "static/js/8.e210d3f1.chunk.js.map": "/b4utrade/static/js/8.e210d3f1.chunk.js.map",
+    "static/js/9.59914ffb.chunk.js": "/b4utrade/static/js/9.59914ffb.chunk.js",
+    "static/js/9.59914ffb.chunk.js.map": "/b4utrade/static/js/9.59914ffb.chunk.js.map",
+    "index.html": "/b4utrade/index.html",
+    "static/css/3.69acafaa.chunk.css.map": "/b4utrade/static/css/3.69acafaa.chunk.css.map",
+    "static/css/main.97111954.chunk.css.map": "/b4utrade/static/css/main.97111954.chunk.css.map",
+    "static/js/0.077dc7d7.chunk.js.LICENSE.txt": "/b4utrade/static/js/0.077dc7d7.chunk.js.LICENSE.txt",
+    "static/js/3.71235315.chunk.js.LICENSE.txt": "/b4utrade/static/js/3.71235315.chunk.js.LICENSE.txt",
+    "static/js/4.13de1130.chunk.js.LICENSE.txt": "/b4utrade/static/js/4.13de1130.chunk.js.LICENSE.txt",
+    "static/js/8.e210d3f1.chunk.js.LICENSE.txt": "/b4utrade/static/js/8.e210d3f1.chunk.js.LICENSE.txt",
+    "static/js/9.59914ffb.chunk.js.LICENSE.txt": "/b4utrade/static/js/9.59914ffb.chunk.js.LICENSE.txt",
+    "static/media/MainPic2.6753ac7b.png": "/b4utrade/static/media/MainPic2.6753ac7b.png",
+    "static/media/font-awesome.min.css": "/b4utrade/static/media/fontawesome-webfont.f691f37e.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0b88593a.js",
+    "static/css/3.69acafaa.chunk.css",
+    "static/js/3.71235315.chunk.js",
+    "static/css/main.97111954.chunk.css",
+    "static/js/main.abcfe307.chunk.js"
+  ]
+}
