@@ -48,7 +48,6 @@ const StockProfile = ({ userInput }) => {
           height={"30px"}
           width={"30px"}
         />
-      {/* </div> */}
     }
 
     return (
